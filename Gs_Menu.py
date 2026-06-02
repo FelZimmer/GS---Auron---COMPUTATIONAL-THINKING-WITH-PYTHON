@@ -2,6 +2,7 @@ import math
 import random
 import matplotlib.pyplot as plt
 import json
+import os
 
 ESTADOS_BRASIL = {
     "AC": "Acre", "AL": "Alagoas", "AP": "Amapá", "AM": "Amazonas",
@@ -12,6 +13,10 @@ ESTADOS_BRASIL = {
     "RS": "Rio Grande do Sul", "RO": "Rondônia", "RR": "Roraima", "SC": "Santa Catarina",
     "SP": "São Paulo", "SE": "Sergipe", "TO": "Tocantins"
 }
+def limpar_tela():
+    # nt = indentifica o Windows e executa o comando 'cls', else = clear para Linux/Mac
+    os.system('cls' if os.name == 'nt' else 'clear')
+
 
 def escolher_estado():
     nomes_estados = sorted(ESTADOS_BRASIL.values())
@@ -64,6 +69,7 @@ def cadastrar_empresa():
 
             
 def login():
+    limpar_tela()
     print("\n--- Dashboard Login ---")
     usuario_input = input("Nome de usuário: ").strip().lower()
     senha_input = input("Senha: ").strip()
@@ -137,12 +143,20 @@ def sortear_evento():
     
 
 def menu():
-    print("""\n ℙ𝕝𝕒𝕥𝕒𝕗𝕠𝕣𝕞𝕒 𝕕𝕖 ℙ𝕣𝕠𝕥𝕖𝕔̧𝕒̃𝕠 𝕊𝕠𝕝𝕒𝕣 𝔹𝟚𝔹 \n""")
-    print(" 1. Sobre a solução")
-    print(" 2. Calcular dano causado por anomalia")
-    print(" 3. Sair ")
-    print(" 4. Opção 4 (em desenvolvimento)")
-    print(" 5. Opção 5 (em desenvolvimento)")
+    limpar_tela()
+    print("="*50)
+    print(""" ℙ𝕝𝕒𝕥𝕒𝕗𝕠𝕣𝕞𝕒 𝕕𝕖 ℙ𝕣𝕠𝕥𝕖𝕔̧𝕒̃𝕠 𝕊𝕠𝕝𝕒𝕣 𝔹𝟚𝔹 """)
+    print("="*50)
+    print()
+    print(" 1. Sobre a solução Auron")
+    print(" 2. Simulação de Impacto de Anomalia")
+    print(" 3. Alertas Ativos")
+    print(" 4. Histórico de Eventos")
+    print(" 5. Previsão de Tempestades")
+    print(" 6. ROI — Custos Evitados e Desempenho")
+    print(" 7. Dashboard Completo")
+    print(" 0. Sair")
+    
 
 
 def funcao_polinomial(ax):
@@ -210,27 +224,33 @@ def calcular_dano():
         fig.suptitle("AURON — Simulação de Impacto de Anomalias Solares", fontsize=13, fontweight="bold")
 
         dano_maximo = funcao_polinomial(eixos[0])   
-
-        print(f"\n Intensidade máxima simulada resultou em "f"R$ {dano_maximo:.2f} de dano potencial.")
+        print("  " + "="*50)
+        print("\n  AURON — Simulação de Impacto de Anomalias Solares \n")
+        print("  " + "="*50)
+        print(f"\n  Intensidade máxima simulada resultou em "f"R$ {dano_maximo:.2f} de dano potencial.")
 
         if dano_maximo > 0:
-            print("Evento solar detectado — simulando crescimento do dano...")
+            print("  Evento solar detectado — simulando crescimento do dano")
             dano_final = funcao_exponencial(eixos[1], dano_maximo)
-            print(f" Dano máximo sem proteção: R$ {dano_final:.2f}")
-            print(f" Com a Auron (ação em t=15min), o dano foi contido.")
+            print(f"  Dano máximo sem proteção: R$ {dano_final:.2f}")
+            print(f"  Com a Auron (ação em t=15min), o dano foi contido.\n")
         else:
             eixos[1].set_visible(False)
-            print(" Nenhum evento solar significativo detectado.")
-            print("   A infraestrutura está segura — monitoramento ativo.")
+            print("\n  Simulação concluída — sem danos estimados para a intensidade atual.\n")
+            print("  Nenhum evento solar significativo detectado.")
+            print("  A infraestrutura está segura — monitoramento ativo.\n")
 
         plt.tight_layout()
         plt.show()
+        input("\nPressione Enter para retornar ao menu...")
 
     except Exception as e:
         print(f"Erro encontrado: {e}")
 
 
 def sobre():
+    print("\n")
+    print("              𝕊𝕠𝕓𝕣𝕖 𝕒 𝔸𝕦𝕣𝕠𝕟               ")
     print("\n" + "="*50)
     print("AURON é uma plataforma B2B de monitoramento e")
     print("proteção contra anomalias solares. Integra dados")
@@ -238,6 +258,39 @@ def sobre():
     print("acionar automações de segurança em data centers")
     print("e instalações de energia solar.")
     print("="*50)
+    print()
+    input("Pressione Enter para retornar ao menu...")
+
+def historico_eventos():
+    try:
+        with open("empresas.json", "r", encoding="utf-8") as f:
+            empresas = json.load(f).get("empresas", [])
+
+        for empresa in empresas:
+            if empresa["usuario"] == name_login:
+                eventos = empresa["eventos"]
+                
+                if eventos:
+                    print(f"\nHistórico de Eventos da {empresa['nome']} :")
+                    for evento in eventos:
+                        print(f"\n  Evento #{evento['id']}")
+                        print(f"  Tipo         : {evento['tipo_evento']}")
+                        print(f"  Intensidade  : {evento['intensidade_nT']} nT")
+                        print(f"  Duração      : {evento['duracao_min']} min")
+                        print(f"  Equipamento  : {evento['equipamento_risco']}")
+                        print(f"  Nível Alerta : {evento['nivel_alerta']}")
+                        print(f"  Dano Potencial: R$ {evento['dano_potencial']:,.2f}")
+                        print(f"  Dano Evitado : R$ {evento['dano_evitado']:,.2f}")
+                        print(f"  Custo Reparo : R$ {evento['custo_reparo']:,.2f}")
+                        print(f"  Auron Acionado: {'✔ Sim' if evento['auron_acionado'] else '✘ Não'}")
+                        print(f"  {'-'*45}")
+                    return
+                        
+        
+    except Exception as e:
+        print(f"Erro encontrado: {e}")            
+            
+
 
 #Login, com nome da empresa e senha, para acessar o dashboard completo, com gráficos de desempenho, ROI e alertas personalizados.
 name_login = login()
@@ -248,9 +301,9 @@ while True:
     menu()
     opcao = input("\nEscolha uma opção: ")
 
-#1. Sobre o Auron
-#2. Simulação de Impacto de Anomalia
-#3. Alertas Ativos
+#1. Sobre o Auron -> Feito
+#2. Simulação de Impacto de Anomalia -> Feito
+#3. Alertas Ativos 
 #4. Histórico de Eventos
 #5. Previsão de Tempestades
 #6. ROI — Custos Evitados e Desempenho
@@ -259,11 +312,31 @@ while True:
 
     match opcao:
         case "1":
+            limpar_tela()
             sobre()
         case "2":
+            limpar_tela()
             calcular_dano()
         case "3":
-            print("\nSaindo do sistema Auron.")
+            limpar_tela()
+            print("\nFuncionalidade de Alertas Ativos em desenvolvimento. Fique atento às próximas atualizações!")
+            input("Pressione Enter para retornar ao menu...")
+        case "4":
+            limpar_tela()
+            historico_eventos()
+            input("Pressione Enter para retornar ao menu...")
+        case "5":
+            print("\nFuncionalidade de Previsão de Tempestades em desenvolvimento. Fique atento às próximas atualizações!")
+            input("Pressione Enter para retornar ao menu...")
+        case "6":
+            print("\nFuncionalidade de ROI em desenvolvimento. Fique atento às próximas atualizações!")
+            input("Pressione Enter para retornar ao menu...")
+        case "7":
+            print("\nFuncionalidade de Dashboard Completo em desenvolvimento. Fique atento às próximas atualizações!")
+            input("Pressione Enter para retornar ao menu...")
+        case "0":
+            limpar_tela()
+            print(f"\nSaindo do sistema Auron. Até a próxima {name_login}!")
             break
         case _:
             print(" Opção inválida. Tente novamente.")
