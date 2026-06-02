@@ -265,11 +265,9 @@ def historico_eventos():
     try:
         with open("empresas.json", "r", encoding="utf-8") as f:
             empresas = json.load(f).get("empresas", [])
-
         for empresa in empresas:
             if empresa["usuario"] == name_login:
                 eventos = empresa["eventos"]
-                
                 if eventos:
                     print(f"\nHistórico de Eventos da {empresa['nome']} :")
                     for evento in eventos:
@@ -285,16 +283,31 @@ def historico_eventos():
                         print(f"  Auron Acionado: {'✔ Sim' if evento['auron_acionado'] else '✘ Não'}")
                         print(f"  {'-'*45}")
                     return
-                        
-        
     except Exception as e:
         print(f"Erro encontrado: {e}")            
             
-
-
+def Alertas_ativos():
+    # colocar cor para cada tipo de alerta (verde, amarelo, vermelho) e destacar o nome da empresa
+    with open("empresas.json", "r", encoding="utf-8") as f:
+        empresas = json.load(f).get("empresas", [])
+        print("\n" + "="*50)
+        print(f"\nAlertas Ativos para {name_login}:")
+        print("\n" + "="*50)
+        for empresa in empresas:
+            if empresa['usuario'] == name_login:
+                eventos = empresa['eventos']
+                for evento in eventos:
+                    if evento['auron_acionado'] == True:
+                        print(f"\nEvento Solar Ativo: {evento['tipo_evento']} - Nível de Alerta: {evento['nivel_alerta']}")
+                    
+                
+    
+    
+    
+    
+    
 #Login, com nome da empresa e senha, para acessar o dashboard completo, com gráficos de desempenho, ROI e alertas personalizados.
 name_login = login()
-
 
 while True:
     sortear_evento()
@@ -304,7 +317,7 @@ while True:
 #1. Sobre o Auron -> Feito
 #2. Simulação de Impacto de Anomalia -> Feito
 #3. Alertas Ativos 
-#4. Histórico de Eventos
+#4. Histórico de Eventos -> Feito
 #5. Previsão de Tempestades
 #6. ROI — Custos Evitados e Desempenho
 #7. Dashboard Completo              
@@ -319,7 +332,7 @@ while True:
             calcular_dano()
         case "3":
             limpar_tela()
-            print("\nFuncionalidade de Alertas Ativos em desenvolvimento. Fique atento às próximas atualizações!")
+            Alertas_ativos()
             input("Pressione Enter para retornar ao menu...")
         case "4":
             limpar_tela()

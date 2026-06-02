@@ -377,6 +377,20 @@
           "dano_potencial": 35000.0,
           "dano_evitado": 0.0,
           "custo_reparo": 35000.0
+        },
+        {
+          "id": 11,
+          "data_hora": "2026-05-08 21:05",
+          "tipo_evento": "EjeÃ§Ã£o de Massa Coronal",
+          "intensidade_nT": 463,
+          "duracao_min": 102,
+          "equipamento_risco": "Servidores",
+          "nivel_alerta": "CrÃ­tico",
+          "auron_acionado": true,
+          "tempo_resposta_min": 8,
+          "dano_potencial": 1380000.0,
+          "dano_evitado": 1173000.0,
+          "custo_reparo": 207000.0
         }
       ]
     }
