@@ -2,7 +2,7 @@
   "eventos": [
     {
       "id": 1,
-      "data_hora": "2026-05-01 03:42",
+      "data_hora": null,
       "tipo_evento": "Ejeção de Massa Coronal",
       "intensidade_nT": 487,
       "duracao_min": 94,
@@ -17,7 +17,7 @@
     },
     {
       "id": 2,
-      "data_hora": "2026-05-04 11:15",
+      "data_hora": null,
       "tipo_evento": "Vento Solar Intenso",
       "intensidade_nT": 143,
       "duracao_min": 210,
@@ -32,7 +32,7 @@
     },
     {
       "id": 3,
-      "data_hora": "2026-05-07 18:30",
+      "data_hora": null,
       "tipo_evento": "Tempestade Geomagnética",
       "intensidade_nT": 312,
       "duracao_min": 57,
@@ -47,7 +47,7 @@
     },
     {
       "id": 4,
-      "data_hora": "2026-05-10 00:05",
+      "data_hora": null,
       "tipo_evento": "Ejeção de Massa Coronal",
       "intensidade_nT": 521,
       "duracao_min": 130,
@@ -62,7 +62,7 @@
     },
     {
       "id": 5,
-      "data_hora": "2026-05-13 09:22",
+      "data_hora": null,
       "tipo_evento": "Rajada de Raios Cósmicos",
       "intensidade_nT": 78,
       "duracao_min": 310,
@@ -77,7 +77,7 @@
     },
     {
       "id": 6,
-      "data_hora": "2026-05-17 22:48",
+      "data_hora": null,
       "tipo_evento": "Vento Solar Intenso",
       "intensidade_nT": 265,
       "duracao_min": 75,
@@ -92,7 +92,7 @@
     },
     {
       "id": 7,
-      "data_hora": "2026-05-21 14:10",
+      "data_hora": null,
       "tipo_evento": "Tempestade Geomagnética",
       "intensidade_nT": 398,
       "duracao_min": 88,
@@ -107,7 +107,7 @@
     },
     {
       "id": 8,
-      "data_hora": "2026-05-28 07:33",
+      "data_hora": null,
       "tipo_evento": "Ejeção de Massa Coronal",
       "intensidade_nT": 190,
       "duracao_min": 45,
@@ -122,7 +122,7 @@
     },
     {
       "id": 9,
-      "data_hora": "2026-05-02 06:18",
+      "data_hora": null,
       "tipo_evento": "Vento Solar Intenso",
       "intensidade_nT": 334,
       "duracao_min": 120,
@@ -137,7 +137,7 @@
     },
     {
       "id": 10,
-      "data_hora": "2026-05-05 15:44",
+      "data_hora": null,
       "tipo_evento": "Rajada de Raios Cósmicos",
       "intensidade_nT": 102,
       "duracao_min": 275,
@@ -152,7 +152,7 @@
     },
     {
       "id": 11,
-      "data_hora": "2026-05-08 21:05",
+      "data_hora": null,
       "tipo_evento": "Ejeção de Massa Coronal",
       "intensidade_nT": 463,
       "duracao_min": 102,
@@ -167,7 +167,7 @@
     },
     {
       "id": 12,
-      "data_hora": "2026-05-11 04:30",
+      "data_hora": null,
       "tipo_evento": "Tempestade Geomagnética",
       "intensidade_nT": 229,
       "duracao_min": 68,
@@ -182,7 +182,7 @@
     },
     {
       "id": 13,
-      "data_hora": "2026-05-14 12:55",
+      "data_hora": null,
       "tipo_evento": "Vento Solar Intenso",
       "intensidade_nT": 88,
       "duracao_min": 195,
@@ -197,7 +197,7 @@
     },
     {
       "id": 14,
-      "data_hora": "2026-05-16 23:40",
+      "data_hora": null,
       "tipo_evento": "Ejeção de Massa Coronal",
       "intensidade_nT": 509,
       "duracao_min": 115,
@@ -212,7 +212,7 @@
     },
     {
       "id": 15,
-      "data_hora": "2026-05-19 08:22",
+      "data_hora": null,
       "tipo_evento": "Tempestade Geomagnética",
       "intensidade_nT": 176,
       "duracao_min": 83,
@@ -227,7 +227,7 @@
     },
     {
       "id": 16,
-      "data_hora": "2026-05-20 17:10",
+      "data_hora": null,
       "tipo_evento": "Rajada de Raios Cósmicos",
       "intensidade_nT": 115,
       "duracao_min": 240,
@@ -242,7 +242,7 @@
     },
     {
       "id": 17,
-      "data_hora": "2026-05-22 02:35",
+      "data_hora": null,
       "tipo_evento": "Ejeção de Massa Coronal",
       "intensidade_nT": 478,
       "duracao_min": 97,
@@ -257,7 +257,7 @@
     },
     {
       "id": 18,
-      "data_hora": "2026-05-23 19:48",
+      "data_hora": null,
       "tipo_evento": "Vento Solar Intenso",
       "intensidade_nT": 287,
       "duracao_min": 135,
@@ -272,7 +272,7 @@
     },
     {
       "id": 19,
-      "data_hora": "2026-05-24 10:15",
+      "data_hora": null,
       "tipo_evento": "Tempestade Geomagnética",
       "intensidade_nT": 143,
       "duracao_min": 155,
@@ -287,7 +287,7 @@
     },
     {
       "id": 20,
-      "data_hora": "2026-05-25 05:28",
+      "data_hora": null,
       "tipo_evento": "Ejeção de Massa Coronal",
       "intensidade_nT": 534,
       "duracao_min": 142,
@@ -302,7 +302,7 @@
     },
     {
       "id": 21,
-      "data_hora": "2026-05-26 13:40",
+      "data_hora": null,
       "tipo_evento": "Vento Solar Intenso",
       "intensidade_nT": 198,
       "duracao_min": 90,
@@ -317,7 +317,7 @@
     },
     {
       "id": 22,
-      "data_hora": "2026-05-27 00:52",
+      "data_hora": null,
       "tipo_evento": "Rajada de Raios Cósmicos",
       "intensidade_nT": 91,
       "duracao_min": 320,
@@ -332,7 +332,7 @@
     },
     {
       "id": 23,
-      "data_hora": "2026-05-28 16:22",
+      "data_hora": null,
       "tipo_evento": "Tempestade Geomagnética",
       "intensidade_nT": 355,
       "duracao_min": 78,
@@ -347,7 +347,7 @@
     },
     {
       "id": 24,
-      "data_hora": "2026-05-29 09:05",
+      "data_hora": null,
       "tipo_evento": "Ejeção de Massa Coronal",
       "intensidade_nT": 412,
       "duracao_min": 108,
@@ -362,7 +362,7 @@
     },
     {
       "id": 25,
-      "data_hora": "2026-05-30 20:17",
+      "data_hora": null,
       "tipo_evento": "Vento Solar Intenso",
       "intensidade_nT": 167,
       "duracao_min": 175,
@@ -377,7 +377,7 @@
     },
     {
       "id": 26,
-      "data_hora": "2026-05-31 03:33",
+      "data_hora": null,
       "tipo_evento": "Rajada de Raios Cósmicos",
       "intensidade_nT": 84,
       "duracao_min": 290,
@@ -392,7 +392,7 @@
     },
     {
       "id": 27,
-      "data_hora": "2026-06-01 11:48",
+      "data_hora": null,
       "tipo_evento": "Tempestade Geomagnética",
       "intensidade_nT": 423,
       "duracao_min": 65,
@@ -407,7 +407,7 @@
     },
     {
       "id": 28,
-      "data_hora": "2026-06-02 07:20",
+      "data_hora": null,
       "tipo_evento": "Ejeção de Massa Coronal",
       "intensidade_nT": 301,
       "duracao_min": 85,

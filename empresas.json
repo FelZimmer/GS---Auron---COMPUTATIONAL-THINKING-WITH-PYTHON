@@ -83,6 +83,21 @@
           "dano_evitado": 1606500.0,
           "custo_reparo": 283500.0,
           "custo_manutencao_mensal": 1200.0
+        },
+        {
+          "id": 3,
+          "data_hora": "2026-06-03 13:46",
+          "tipo_evento": "Tempestade Geomagnética",
+          "intensidade_nT": 312,
+          "duracao_min": 57,
+          "equipamento_risco": "Inversores Solares",
+          "nivel_alerta": "Alerta",
+          "auron_acionado": true,
+          "tempo_resposta_min": 8,
+          "dano_potencial": 620000.0,
+          "dano_evitado": 527000.0,
+          "custo_reparo": 93000.0,
+          "custo_manutencao_mensal": 850.0
         }
       ]
     },
@@ -326,6 +341,21 @@
           "dano_evitado": 0.0,
           "custo_reparo": 39000.0,
           "custo_manutencao_mensal": 300.0
+        },
+        {
+          "id": 13,
+          "data_hora": "2026-06-03 13:47",
+          "tipo_evento": "Vento Solar Intenso",
+          "intensidade_nT": 88,
+          "duracao_min": 195,
+          "equipamento_risco": "Painéis Fotovoltaicos",
+          "nivel_alerta": "Atenção",
+          "auron_acionado": false,
+          "tempo_resposta_min": null,
+          "dano_potencial": 53000.0,
+          "dano_evitado": 0.0,
+          "custo_reparo": 53000.0,
+          "custo_manutencao_mensal": 600.0
         }
       ]
     }

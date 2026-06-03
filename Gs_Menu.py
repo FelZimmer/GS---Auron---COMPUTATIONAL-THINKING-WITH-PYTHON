@@ -111,7 +111,13 @@ def login():
         print("\nErro: Arquivo de dados corrompido.")
         return None, None
 
-
+def tela_inicial():
+    print("\nBem-vindo ao Auron — Plataforma de Proteção Solar B2B")
+    match input("\n1. Fazer Login \n2. Cadastrar sua Empresa\nDigite: "):
+        case "1":
+            return login()
+        case "2":
+            return cadastrar_empresa()
 
 def sortear_evento():
     is_event = random.choice([True, False, False, False])
@@ -119,7 +125,9 @@ def sortear_evento():
         with open("eventos.json", "r", encoding="utf-8") as f:
             data = json.load(f)
             evento_aleatorio = random.choice(data["eventos"])
+            evento_aleatorio["data_hora"] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
             print(f"\n Evento Solar Detectado: {evento_aleatorio['tipo_evento']}")
+            print(f" Data/Hora: {evento_aleatorio['data_hora']}")
             print(f" Status: {evento_aleatorio['nivel_alerta']}") # Pintar de acordo com o nível de alerta
     else:
         print(" Nenhum evento solar significativo detectado.")
@@ -260,29 +268,53 @@ def sobre():
     input("Pressione Enter para retornar ao menu...")
 
 def historico_eventos():
-    try:
+    pdf = FPDF()
+    pdf.add_page()
+    # Adicionar a imagem no topo
+    pdf.image("./images/capa.png", x=5, y=5, w=200)
+
+    # Mover o cursor para baixo da imagem (a imagem tem ~42 de altura)
+    pdf.set_y(55)
+
+    # Definir a fonte (Arial, negrito, tamanho 16)
+    pdf.set_font("Arial", "B", 16)
+
+    # Adicionar um título (largura, altura, texto)
+    pdf.cell(200, 15, f"Histórico de Eventos - {name_empresa}", ln=1, align="C")
+
+    pdf.set_font("Arial", '' ,  12)
+    pdf.cell(200, 5, f"Data: {datetime.datetime.now().strftime('%d/%m/%Y')}", ln=1, align="C")
+    pdf.ln(5)
+
+    try:    
         with open("empresas.json", "r", encoding="utf-8") as f:
             empresas = json.load(f).get("empresas", [])
-        for empresa in empresas:
-            if empresa["usuario"] == name_login:
-                eventos = empresa["eventos"]
-                if eventos:
-                    print(f"\nHistórico de Eventos da {empresa['nome']} :")
-                    for evento in eventos:
-                        print(f"\n  Evento #{evento['id']}")
-                        print(f"  Tipo         : {evento['tipo_evento']}")
-                        print(f"  Intensidade  : {evento['intensidade_nT']} nT")
-                        print(f"  Duração      : {evento['duracao_min']} min")
-                        print(f"  Equipamento  : {evento['equipamento_risco']}")
-                        print(f"  Nível Alerta : {evento['nivel_alerta']}")
-                        print(f"  Dano Potencial: R$ {evento['dano_potencial']:,.2f}")
-                        print(f"  Dano Evitado : R$ {evento['dano_evitado']:,.2f}")
-                        print(f"  Custo Reparo : R$ {evento['custo_reparo']:,.2f}")
-                        print(f"  Auron Acionado: {'✔ Sim' if evento['auron_acionado'] else '✘ Não'}")
-                        print(f"  {'-'*45}")
-                    return
+            for empresa in empresas:
+                if empresa["usuario"] == name_login:
+                    eventos = empresa["eventos"]
+                    if eventos:
+                        for evento in eventos:
+                            pdf.set_font("Arial", "B", 14)
+                            pdf.cell(200, 10, f"Evento #{evento['id']}", ln=1)
+                            pdf.set_font("Arial", '', 12)
+                            pdf.cell(200, 5, f"Data/Hora: {evento['data_hora']}", ln=1)
+                            pdf.cell(200, 5, f"Tipo: {evento['tipo_evento']}", ln=1)
+                            pdf.cell(200, 5, f"Intensidade: {evento['intensidade_nT']} nT", ln=1)
+                            pdf.cell(200, 5, f"Duração: {evento['duracao_min']} min", ln=1)
+                            pdf.cell(200, 5, f"Equipamento: {evento['equipamento_risco']}", ln=1)
+                            pdf.cell(200, 5, f"Nível Alerta: {evento['nivel_alerta']}", ln=1)
+                            pdf.cell(200, 5, f"Dano Potencial: R$ {evento['dano_potencial']:,.2f}", ln=1)
+                            pdf.cell(200, 5, f"Dano Evitado: R$ {evento['dano_evitado']:,.2f}", ln=1)
+                            pdf.cell(200, 5, f"Custo Reparo: R$ {evento['custo_reparo']:,.2f}", ln=1)
+                            pdf.cell(200, 5, f"Auron Acionado: {'Sim' if evento['auron_acionado'] else 'Não'}", ln=1)
+                            pdf.cell(200, 10, "-"*50, ln=1)
+                            if pdf.get_y() > 200:
+                                pdf.add_page()
+                    pdf.output(f"./relatorios/relatorio_eventos_{name_empresa}_{datetime.datetime.now().strftime('%d_%m_%Y')}.pdf")
+                    print(f"Relatório gerado com sucesso!\n")
     except Exception as e:
-        print(f"Erro encontrado: {e}")  
+        print(f"Erro ao gerar relatório: {e}")
+
 
 def gerar_relatorio_roi():
     
@@ -293,6 +325,7 @@ def gerar_relatorio_roi():
     total_dano_potencial = 0
     total_dano_evitado = 0
     total_custo_reparo = 0
+    percentual_protecao = "0%"
     tempo_resposta_total = 0
     tempo_resposta_medio = 0
     evento_maior_intensidade = 0
@@ -454,7 +487,7 @@ def gerar_relatorio_roi():
 
     pdf.ln(5)
     # Salvar o arquivo
-    pdf.output(f"./relatorios/relatorio_{name_empresa}_{datetime.datetime.now().strftime('%d_%m_%Y')}.pdf") # Os relatórios são armazenados por dia, não é possivel ter mais de um relatório no mesmo dia
+    pdf.output(f"./relatorios/relatorio_roi_{name_empresa}_{datetime.datetime.now().strftime('%d_%m_%Y')}.pdf") # Os relatórios são armazenados por dia, não é possivel ter mais de um relatório no mesmo dia
     print(f"Relatório gerado com sucesso!\n\n")
         
 def alertas_ativos():
@@ -472,7 +505,7 @@ def alertas_ativos():
                         print(f"\nEvento Solar Ativo: {evento['tipo_evento']} - Nível de Alerta: {evento['nivel_alerta']}")
                     
 #Login, com nome da empresa e senha, para acessar o dashboard completo, com gráficos de desempenho, ROI e alertas personalizados.
-name_login, name_empresa = login()
+name_login, name_empresa = tela_inicial()
 
 while True:
     limpar_tela()
