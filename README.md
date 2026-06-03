@@ -46,6 +46,3 @@ Arquivo comprimido contendo:
 # A fazer
  - Adicionar função de planos da plataforma (Básico, Premium, etc.)
  - Tratamento de erro/validação no login e cadastro
- - Página de cadastro: 
-    - Alterar para aparecer as siglas de cada estado
-    - Melhorar o tratamento de erro

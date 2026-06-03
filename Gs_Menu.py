@@ -20,13 +20,11 @@ def limpar_tela():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 
-def escolher_estado():
-    nomes_estados = sorted(ESTADOS_BRASIL.values())
-    
+def escolher_estado():    
     while True:
         print("\nEscolha o estado onde sua empresa está localizada:")
-        for i, estado in enumerate(nomes_estados, 1):
-            print(f"{i:2}. {estado}")
+        for sigla, estado in ESTADOS_BRASIL.items():
+            print(f"{sigla} - {estado}")
             
         escolha = input("\nDigite a sigla correspondente ao seu estado: ")
         
@@ -35,6 +33,7 @@ def escolher_estado():
                 if escolha.upper() == sigla:
                     print(f"Você selecionou: {nome_estado}")
                     return nome_estado
+
         except Exception as e:
             print(f"Erro encontrado: {e}")
 
@@ -95,8 +94,7 @@ def login():
             print("\nUsuário ou senha incorreto(s).")
             match int(input("""Selecione uma opção:\n
 1. Cadastro
-2. Tentar novamente \n
-                            """)):
+2. Tentar novamente \nDigite: """)):
                 case 1:
                     return cadastrar_empresa()
                 case 2:
@@ -286,7 +284,7 @@ def historico_eventos():
     except Exception as e:
         print(f"Erro encontrado: {e}")  
 
-def gerar_relatorio():
+def gerar_relatorio_roi():
     
     # Variaveis
     total_eventos = 0
@@ -341,8 +339,6 @@ def gerar_relatorio():
     except Exception as e:
         print(f"Erro encontrado: {e}")
     
-    titulo = f"Relatório de ROI - {name_empresa}"
-    
     # Configurar a página do PDF
     pdf = FPDF()
     pdf.add_page()
@@ -356,12 +352,10 @@ def gerar_relatorio():
     pdf.set_font("Arial", "B", 16)
 
     # Adicionar um título (largura, altura, texto)
-    pdf.cell(200, 15, titulo, ln=1, align="C")
+    pdf.cell(200, 15, f"Relatório de ROI - {name_empresa}", ln=1, align="C")
 
     pdf.set_font("Arial", '' ,  12)
     pdf.cell(200, 5, f"Data: {datetime.datetime.now().strftime('%d/%m/%Y')}", ln=1, align="C")
-
-    # Dar um pequeno espaçamento após o título
     pdf.ln(5)
 
     # Resumo Executivo
@@ -514,7 +508,7 @@ while True:
             print("\nFuncionalidade de Previsão de Tempestades em desenvolvimento. Fique atento às próximas atualizações!")
             input("Pressione Enter para retornar ao menu...")
         case "6":
-            gerar_relatorio()
+            gerar_relatorio_roi()
             input("Pressione Enter para retornar ao menu...")
         case "7":
             print("\nFuncionalidade de Dashboard Completo em desenvolvimento. Fique atento às próximas atualizações!")
