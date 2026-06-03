@@ -42,3 +42,10 @@ Arquivo comprimido contendo:
 - ❌ Não incluir prints da execução no PDF
 - ❌ Não incluir nome dos integrantes no PDF
 - ❌ Entregar sem o arquivo PDF
+
+# A fazer
+ - Adicionar função de planos da plataforma (Básico, Premium, etc.)
+ - Tratamento de erro/validação no login e cadastro
+ - Página de cadastro: 
+    - Alterar para aparecer as siglas de cada estado
+    - Melhorar o tratamento de erro

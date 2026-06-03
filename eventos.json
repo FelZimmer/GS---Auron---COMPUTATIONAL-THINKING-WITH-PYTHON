@@ -10,9 +10,10 @@
       "nivel_alerta": "Crítico",
       "auron_acionado": true,
       "tempo_resposta_min": 12,
-      "dano_potencial": 1250000.00,
-      "dano_evitado": 1062500.00,
-      "custo_reparo": 187500.00
+      "dano_potencial": 1250000.0,
+      "dano_evitado": 1062500.0,
+      "custo_reparo": 187500.0,
+      "custo_manutencao_mensal": 1200.0
     },
     {
       "id": 2,
@@ -24,9 +25,10 @@
       "nivel_alerta": "Atenção",
       "auron_acionado": false,
       "tempo_resposta_min": null,
-      "dano_potencial": 95000.00,
-      "dano_evitado": 0.00,
-      "custo_reparo": 95000.00
+      "dano_potencial": 95000.0,
+      "dano_evitado": 0.0,
+      "custo_reparo": 95000.0,
+      "custo_manutencao_mensal": 450.0
     },
     {
       "id": 3,
@@ -38,9 +40,10 @@
       "nivel_alerta": "Alerta",
       "auron_acionado": true,
       "tempo_resposta_min": 8,
-      "dano_potencial": 620000.00,
-      "dano_evitado": 527000.00,
-      "custo_reparo": 93000.00
+      "dano_potencial": 620000.0,
+      "dano_evitado": 527000.0,
+      "custo_reparo": 93000.0,
+      "custo_manutencao_mensal": 850.0
     },
     {
       "id": 4,
@@ -52,9 +55,10 @@
       "nivel_alerta": "Crítico",
       "auron_acionado": true,
       "tempo_resposta_min": 10,
-      "dano_potencial": 1890000.00,
-      "dano_evitado": 1606500.00,
-      "custo_reparo": 283500.00
+      "dano_potencial": 1890000.0,
+      "dano_evitado": 1606500.0,
+      "custo_reparo": 283500.0,
+      "custo_manutencao_mensal": 1200.0
     },
     {
       "id": 5,
@@ -66,9 +70,10 @@
       "nivel_alerta": "Atenção",
       "auron_acionado": false,
       "tempo_resposta_min": null,
-      "dano_potencial": 42000.00,
-      "dano_evitado": 0.00,
-      "custo_reparo": 42000.00
+      "dano_potencial": 42000.0,
+      "dano_evitado": 0.0,
+      "custo_reparo": 42000.0,
+      "custo_manutencao_mensal": 300.0
     },
     {
       "id": 6,
@@ -80,9 +85,10 @@
       "nivel_alerta": "Alerta",
       "auron_acionado": true,
       "tempo_resposta_min": 15,
-      "dano_potencial": 430000.00,
-      "dano_evitado": 365500.00,
-      "custo_reparo": 64500.00
+      "dano_potencial": 430000.0,
+      "dano_evitado": 365500.0,
+      "custo_reparo": 64500.0,
+      "custo_manutencao_mensal": 600.0
     },
     {
       "id": 7,
@@ -94,9 +100,10 @@
       "nivel_alerta": "Crítico",
       "auron_acionado": true,
       "tempo_resposta_min": 9,
-      "dano_potencial": 980000.00,
-      "dano_evitado": 833000.00,
-      "custo_reparo": 147000.00
+      "dano_potencial": 980000.0,
+      "dano_evitado": 833000.0,
+      "custo_reparo": 147000.0,
+      "custo_manutencao_mensal": 450.0
     },
     {
       "id": 8,
@@ -108,9 +115,10 @@
       "nivel_alerta": "Alerta",
       "auron_acionado": true,
       "tempo_resposta_min": 14,
-      "dano_potencial": 215000.00,
-      "dano_evitado": 182750.00,
-      "custo_reparo": 32250.00
+      "dano_potencial": 215000.0,
+      "dano_evitado": 182750.0,
+      "custo_reparo": 32250.0,
+      "custo_manutencao_mensal": 850.0
     },
     {
       "id": 9,
@@ -122,9 +130,10 @@
       "nivel_alerta": "Alerta",
       "auron_acionado": true,
       "tempo_resposta_min": 11,
-      "dano_potencial": 710000.00,
-      "dano_evitado": 603500.00,
-      "custo_reparo": 106500.00
+      "dano_potencial": 710000.0,
+      "dano_evitado": 603500.0,
+      "custo_reparo": 106500.0,
+      "custo_manutencao_mensal": 1200.0
     },
     {
       "id": 10,
@@ -136,9 +145,10 @@
       "nivel_alerta": "Atenção",
       "auron_acionado": false,
       "tempo_resposta_min": null,
-      "dano_potencial": 67000.00,
-      "dano_evitado": 0.00,
-      "custo_reparo": 67000.00
+      "dano_potencial": 67000.0,
+      "dano_evitado": 0.0,
+      "custo_reparo": 67000.0,
+      "custo_manutencao_mensal": 300.0
     },
     {
       "id": 11,
@@ -150,9 +160,10 @@
       "nivel_alerta": "Crítico",
       "auron_acionado": true,
       "tempo_resposta_min": 8,
-      "dano_potencial": 1380000.00,
-      "dano_evitado": 1173000.00,
-      "custo_reparo": 207000.00
+      "dano_potencial": 1380000.0,
+      "dano_evitado": 1173000.0,
+      "custo_reparo": 207000.0,
+      "custo_manutencao_mensal": 1200.0
     },
     {
       "id": 12,
@@ -164,9 +175,10 @@
       "nivel_alerta": "Alerta",
       "auron_acionado": true,
       "tempo_resposta_min": 13,
-      "dano_potencial": 495000.00,
-      "dano_evitado": 420750.00,
-      "custo_reparo": 74250.00
+      "dano_potencial": 495000.0,
+      "dano_evitado": 420750.0,
+      "custo_reparo": 74250.0,
+      "custo_manutencao_mensal": 450.0
     },
     {
       "id": 13,
@@ -178,9 +190,10 @@
       "nivel_alerta": "Atenção",
       "auron_acionado": false,
       "tempo_resposta_min": null,
-      "dano_potencial": 53000.00,
-      "dano_evitado": 0.00,
-      "custo_reparo": 53000.00
+      "dano_potencial": 53000.0,
+      "dano_evitado": 0.0,
+      "custo_reparo": 53000.0,
+      "custo_manutencao_mensal": 600.0
     },
     {
       "id": 14,
@@ -192,9 +205,10 @@
       "nivel_alerta": "Crítico",
       "auron_acionado": true,
       "tempo_resposta_min": 10,
-      "dano_potencial": 1750000.00,
-      "dano_evitado": 1487500.00,
-      "custo_reparo": 262500.00
+      "dano_potencial": 1750000.0,
+      "dano_evitado": 1487500.0,
+      "custo_reparo": 262500.0,
+      "custo_manutencao_mensal": 1200.0
     },
     {
       "id": 15,
@@ -206,9 +220,10 @@
       "nivel_alerta": "Alerta",
       "auron_acionado": true,
       "tempo_resposta_min": 16,
-      "dano_potencial": 320000.00,
-      "dano_evitado": 272000.00,
-      "custo_reparo": 48000.00
+      "dano_potencial": 320000.0,
+      "dano_evitado": 272000.0,
+      "custo_reparo": 48000.0,
+      "custo_manutencao_mensal": 850.0
     },
     {
       "id": 16,
@@ -220,9 +235,10 @@
       "nivel_alerta": "Atenção",
       "auron_acionado": false,
       "tempo_resposta_min": null,
-      "dano_potencial": 48000.00,
-      "dano_evitado": 0.00,
-      "custo_reparo": 48000.00
+      "dano_potencial": 48000.0,
+      "dano_evitado": 0.0,
+      "custo_reparo": 48000.0,
+      "custo_manutencao_mensal": 300.0
     },
     {
       "id": 17,
@@ -234,9 +250,10 @@
       "nivel_alerta": "Crítico",
       "auron_acionado": true,
       "tempo_resposta_min": 9,
-      "dano_potencial": 1320000.00,
-      "dano_evitado": 1122000.00,
-      "custo_reparo": 198000.00
+      "dano_potencial": 1320000.0,
+      "dano_evitado": 1122000.0,
+      "custo_reparo": 198000.0,
+      "custo_manutencao_mensal": 1200.0
     },
     {
       "id": 18,
@@ -248,9 +265,10 @@
       "nivel_alerta": "Alerta",
       "auron_acionado": true,
       "tempo_resposta_min": 12,
-      "dano_potencial": 580000.00,
-      "dano_evitado": 493000.00,
-      "custo_reparo": 87000.00
+      "dano_potencial": 580000.0,
+      "dano_evitado": 493000.0,
+      "custo_reparo": 87000.0,
+      "custo_manutencao_mensal": 450.0
     },
     {
       "id": 19,
@@ -262,9 +280,10 @@
       "nivel_alerta": "Atenção",
       "auron_acionado": false,
       "tempo_resposta_min": null,
-      "dano_potencial": 82000.00,
-      "dano_evitado": 0.00,
-      "custo_reparo": 82000.00
+      "dano_potencial": 82000.0,
+      "dano_evitado": 0.0,
+      "custo_reparo": 82000.0,
+      "custo_manutencao_mensal": 600.0
     },
     {
       "id": 20,
@@ -276,9 +295,10 @@
       "nivel_alerta": "Crítico",
       "auron_acionado": true,
       "tempo_resposta_min": 7,
-      "dano_potencial": 2100000.00,
-      "dano_evitado": 1785000.00,
-      "custo_reparo": 315000.00
+      "dano_potencial": 2100000.0,
+      "dano_evitado": 1785000.0,
+      "custo_reparo": 315000.0,
+      "custo_manutencao_mensal": 1200.0
     },
     {
       "id": 21,
@@ -290,9 +310,10 @@
       "nivel_alerta": "Alerta",
       "auron_acionado": true,
       "tempo_resposta_min": 14,
-      "dano_potencial": 370000.00,
-      "dano_evitado": 314500.00,
-      "custo_reparo": 55500.00
+      "dano_potencial": 370000.0,
+      "dano_evitado": 314500.0,
+      "custo_reparo": 55500.0,
+      "custo_manutencao_mensal": 850.0
     },
     {
       "id": 22,
@@ -304,9 +325,10 @@
       "nivel_alerta": "Atenção",
       "auron_acionado": false,
       "tempo_resposta_min": null,
-      "dano_potencial": 39000.00,
-      "dano_evitado": 0.00,
-      "custo_reparo": 39000.00
+      "dano_potencial": 39000.0,
+      "dano_evitado": 0.0,
+      "custo_reparo": 39000.0,
+      "custo_manutencao_mensal": 300.0
     },
     {
       "id": 23,
@@ -318,9 +340,10 @@
       "nivel_alerta": "Crítico",
       "auron_acionado": true,
       "tempo_resposta_min": 11,
-      "dano_potencial": 840000.00,
-      "dano_evitado": 714000.00,
-      "custo_reparo": 126000.00
+      "dano_potencial": 840000.0,
+      "dano_evitado": 714000.0,
+      "custo_reparo": 126000.0,
+      "custo_manutencao_mensal": 450.0
     },
     {
       "id": 24,
@@ -332,9 +355,10 @@
       "nivel_alerta": "Crítico",
       "auron_acionado": true,
       "tempo_resposta_min": 9,
-      "dano_potencial": 1050000.00,
-      "dano_evitado": 892500.00,
-      "custo_reparo": 157500.00
+      "dano_potencial": 1050000.0,
+      "dano_evitado": 892500.0,
+      "custo_reparo": 157500.0,
+      "custo_manutencao_mensal": 1200.0
     },
     {
       "id": 25,
@@ -346,9 +370,10 @@
       "nivel_alerta": "Alerta",
       "auron_acionado": true,
       "tempo_resposta_min": 15,
-      "dano_potencial": 290000.00,
-      "dano_evitado": 246500.00,
-      "custo_reparo": 43500.00
+      "dano_potencial": 290000.0,
+      "dano_evitado": 246500.0,
+      "custo_reparo": 43500.0,
+      "custo_manutencao_mensal": 600.0
     },
     {
       "id": 26,
@@ -360,9 +385,10 @@
       "nivel_alerta": "Atenção",
       "auron_acionado": false,
       "tempo_resposta_min": null,
-      "dano_potencial": 35000.00,
-      "dano_evitado": 0.00,
-      "custo_reparo": 35000.00
+      "dano_potencial": 35000.0,
+      "dano_evitado": 0.0,
+      "custo_reparo": 35000.0,
+      "custo_manutencao_mensal": 300.0
     },
     {
       "id": 27,
@@ -374,9 +400,10 @@
       "nivel_alerta": "Crítico",
       "auron_acionado": true,
       "tempo_resposta_min": 10,
-      "dano_potencial": 1120000.00,
-      "dano_evitado": 952000.00,
-      "custo_reparo": 168000.00
+      "dano_potencial": 1120000.0,
+      "dano_evitado": 952000.0,
+      "custo_reparo": 168000.0,
+      "custo_manutencao_mensal": 1200.0
     },
     {
       "id": 28,
@@ -388,9 +415,10 @@
       "nivel_alerta": "Alerta",
       "auron_acionado": true,
       "tempo_resposta_min": 13,
-      "dano_potencial": 650000.00,
-      "dano_evitado": 552500.00,
-      "custo_reparo": 97500.00
+      "dano_potencial": 650000.0,
+      "dano_evitado": 552500.0,
+      "custo_reparo": 97500.0,
+      "custo_manutencao_mensal": 850.0
     }
   ]
 }

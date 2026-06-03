@@ -3,6 +3,8 @@ import random
 import matplotlib.pyplot as plt
 import json
 import os
+from fpdf import FPDF
+import datetime
 
 ESTADOS_BRASIL = {
     "AC": "Acre", "AL": "Alagoas", "AP": "Amapá", "AM": "Amazonas",
@@ -64,9 +66,7 @@ def cadastrar_empresa():
         json.dump(data, f, ensure_ascii=False, indent=2)
     
     print(f"\nCadastro concluído! ")
-    login()
-    
-
+    return login()
             
 def login():
     limpar_tela()
@@ -90,7 +90,7 @@ def login():
 
         if empresa_logada:
             print(f"\nLogin bem-sucedido! Bem-vindo, {empresa_logada['nome']}!")
-            return empresa_logada["usuario"]  # Retorna o nome de usuário para uso posterior 
+            return empresa_logada["usuario"], empresa_logada["nome"]  # Retorna o nome de usuário para uso posterior 
         else:
             print("\nUsuário ou senha incorreto(s).")
             match int(input("""Selecione uma opção:\n
@@ -98,26 +98,27 @@ def login():
 2. Tentar novamente \n
                             """)):
                 case 1:
-                    cadastrar_empresa()
+                    return cadastrar_empresa()
                 case 2:
                     print("\nTente novamente fazer login.")
-                    login()
+                    return login()
                 case _:
                     print("Opção inválida. Retornando ao menu principal.")
+                    return None, None
 
     except FileNotFoundError:
         print("\nErro: Arquivo 'empresas.json' não encontrado.")
-        return None
+        return None, None
     except json.JSONDecodeError:
         print("\nErro: Arquivo de dados corrompido.")
-        return None
+        return None, None
 
 
 
 def sortear_evento():
     is_event = random.choice([True, False, False, False])
     if is_event:
-        with open("eventos.json", "r") as f:
+        with open("eventos.json", "r", encoding="utf-8") as f:
             data = json.load(f)
             evento_aleatorio = random.choice(data["eventos"])
             print(f"\n Evento Solar Detectado: {evento_aleatorio['tipo_evento']}")
@@ -143,7 +144,6 @@ def sortear_evento():
     
 
 def menu():
-    limpar_tela()
     print("="*50)
     print(""" ℙ𝕝𝕒𝕥𝕒𝕗𝕠𝕣𝕞𝕒 𝕕𝕖 ℙ𝕣𝕠𝕥𝕖𝕔̧𝕒̃𝕠 𝕊𝕠𝕝𝕒𝕣 𝔹𝟚𝔹 """)
     print("="*50)
@@ -284,9 +284,186 @@ def historico_eventos():
                         print(f"  {'-'*45}")
                     return
     except Exception as e:
-        print(f"Erro encontrado: {e}")            
-            
-def Alertas_ativos():
+        print(f"Erro encontrado: {e}")  
+
+def gerar_relatorio():
+    
+    # Variaveis
+    total_eventos = 0
+    eventos_com_auron = 0
+    eventos_sem_protecao = 0
+    total_dano_potencial = 0
+    total_dano_evitado = 0
+    total_custo_reparo = 0
+    tempo_resposta_total = 0
+    tempo_resposta_medio = 0
+    evento_maior_intensidade = 0
+    equipamentos_afetados = []
+    mensalidade_auron_solar = 2990
+    custo_manutencao_total = 0
+    custo_total_sem_protecao = 0
+    custo_total_com_protecao = 0
+    economia_gerada = 0
+
+
+    try:
+        with open("empresas.json", "r", encoding="utf-8") as f:
+            empresas = json.load(f).get("empresas", [])
+        for empresa in empresas:
+            if empresa["usuario"] == name_login:
+                eventos = empresa["eventos"]
+                if eventos:
+                    total_eventos = len(eventos)
+                    for e in eventos:
+                        eventos_com_auron += 1 if e["auron_acionado"] == True else 0
+                        eventos_sem_protecao += 1 if e["auron_acionado"] == False else 0
+                        total_dano_potencial += e["dano_potencial"]
+                        total_dano_evitado += e["dano_potencial"] if e["auron_acionado"] == True else 0
+                        total_custo_reparo += e["custo_reparo"] if e["auron_acionado"] == False else 0 
+                        percentual_protecao = f"{(total_dano_evitado / total_dano_potencial) * 100:.2f}%" if total_dano_potencial > 0 else 0
+                        tempo_resposta_total += e["tempo_resposta_min"] if e["auron_acionado"] == True else 0
+                        if eventos_com_auron > 0:
+                            tempo_resposta_medio = tempo_resposta_total // eventos_com_auron
+                        else:
+                            tempo_resposta_medio = 0
+                        if e["auron_acionado"] == True:
+                            if e["intensidade_nT"] > evento_maior_intensidade:
+                                evento_maior_intensidade = e["intensidade_nT"]
+                            custo_manutencao_total += e["custo_manutencao_mensal"]
+                            
+                        else:
+                            if e["equipamento_risco"] not in equipamentos_afetados:
+                                equipamentos_afetados.append(e["equipamento_risco"])
+                    custo_total_com_protecao = custo_manutencao_total + mensalidade_auron_solar
+                    custo_total_sem_protecao = total_dano_potencial + total_custo_reparo + custo_manutencao_total
+                    economia_gerada = custo_total_sem_protecao - custo_total_com_protecao
+                    
+    except Exception as e:
+        print(f"Erro encontrado: {e}")
+    
+    titulo = f"Relatório de ROI - {name_empresa}"
+    
+    # Configurar a página do PDF
+    pdf = FPDF()
+    pdf.add_page()
+    # Adicionar a imagem no topo
+    pdf.image("./images/capa.png", x=5, y=5, w=200)
+
+    # Mover o cursor para baixo da imagem (a imagem tem ~42 de altura)
+    pdf.set_y(55)
+
+    # Definir a fonte (Arial, negrito, tamanho 16)
+    pdf.set_font("Arial", "B", 16)
+
+    # Adicionar um título (largura, altura, texto)
+    pdf.cell(200, 15, titulo, ln=1, align="C")
+
+    pdf.set_font("Arial", '' ,  12)
+    pdf.cell(200, 5, f"Data: {datetime.datetime.now().strftime('%d/%m/%Y')}", ln=1, align="C")
+
+    # Dar um pequeno espaçamento após o título
+    pdf.ln(5)
+
+    # Resumo Executivo
+    pdf.set_font("Arial", "B", 14)
+    pdf.cell(200, 10, "Resumo Executivo", ln=1, align="A")
+
+    pdf.set_font("Arial", "", 12)
+    pdf.cell(60, 8, f"Total de eventos monitorados: ", ln=0)
+    pdf.set_font("Arial", "B", 12)
+    pdf.cell(20, 8, f"{total_eventos}", ln=1)
+    pdf.set_font("Arial", "", 12)
+    pdf.cell(75, 8, f"Total de eventos com Auron acionado: ", ln=0)
+    pdf.set_font("Arial", "B", 12)
+    pdf.cell(20, 8, f"{eventos_com_auron}", ln=1)
+    pdf.set_font("Arial", "", 12)
+    pdf.cell(62, 8, f"Total de eventos sem proteção: ", ln=0)
+    pdf.set_font("Arial", "B", 12)
+    pdf.cell(20, 8, f"{eventos_sem_protecao}", ln=1)
+    pdf.ln(5)
+
+    # Analise Financeira
+    pdf.set_font("Arial", "B", 14)
+    pdf.cell(200, 10, "Alálise Financeira", ln=1, align="A")
+
+    pdf.set_font("Arial", "", 12)
+    pdf.cell(200, 8, f"Total de dano potencial (soma de todos eventos) :", ln=1)
+    pdf.set_font("Arial", "B", 12)
+    pdf.cell(200, 8, f"R${total_dano_potencial:,.2f}", ln=1)
+
+    pdf.set_font("Arial", "", 12)
+    pdf.cell(200, 8, f"Total de dano evitado :", ln=1)
+    pdf.set_font("Arial", "B", 12)
+    pdf.cell(200, 8, f"R${total_dano_evitado:,.2f}", ln=1)
+
+    pdf.set_font("Arial", "", 12)
+    pdf.cell(200, 8, f"Total de custo de reparo (o que não foi evitado) :", ln=1)
+    pdf.set_font("Arial", "B", 12)
+    pdf.cell(200, 8, f"R${total_custo_reparo:,.2f}", ln=1)
+
+    pdf.set_font("Arial", "", 12)
+    pdf.cell(200, 8, f"Percentual de proteção : ", ln=1)
+    pdf.set_font("Arial", "B", 12)
+    pdf.cell(200, 8, f"{percentual_protecao}", ln=1)
+    pdf.ln(5)
+
+    # Eficiencia Operacional
+    pdf.set_font("Arial", "B", 14)
+    pdf.cell(200, 10, "Eficiencia Operacional", ln=1, align="A")
+
+    pdf.set_font("Arial", "", 12)
+    pdf.cell(200, 8, f"Tempo médio de resposta do Auron :", ln=1)
+    pdf.set_font("Arial", "B", 12)
+    pdf.cell(200, 8, f"{tempo_resposta_medio} min", ln=1)
+    pdf.set_font("Arial", "", 12)
+    pdf.cell(200, 8, f"Evento de maior intensidade registrado :", ln=1)
+    pdf.set_font("Arial", "B", 12)
+    pdf.cell(200, 8, f"{evento_maior_intensidade} nT", ln=1)
+    pdf.set_font("Arial", "", 12)
+    pdf.cell(200, 8, f"Lista de equipamentos afetados :", ln=1)
+    pdf.set_font("Arial", "B", 12)
+    pdf.ln(2)
+    for i, e in enumerate(equipamentos_afetados):
+        pdf.cell(200, 8, f"  {i+1}. {e}", ln=1)
+    pdf.ln(5)
+
+    # Comparativo COM vs SEM
+    pdf.set_font("Arial", "B", 14)
+    pdf.cell(200, 10, "Comparativo COM vs SEM", ln=1, align="A")
+
+    pdf.set_font("Arial", "", 12)
+    pdf.cell(200, 8, f"Custo total SEM proteção: ", ln=1)
+    pdf.set_font("Arial", "B", 12)
+    pdf.cell(200, 8, f"R${custo_total_sem_protecao:,.2f}", ln=1)
+
+    pdf.set_font("Arial", "", 12)
+    pdf.cell(200, 8, f"Custo total COM proteção: ", ln=1)
+    pdf.set_font("Arial", "B", 12)
+    pdf.cell(200, 8, f"R${custo_total_com_protecao:,.2f}", ln=1)
+
+    pdf.set_font("Arial", "", 12)
+    pdf.cell(200, 8, f"Economia gerada: ", ln=1)
+    pdf.set_font("Arial", "B", 12)
+    pdf.cell(200, 8, f"R${economia_gerada:,.2f}", ln=1)
+    pdf.ln(5)
+
+    # Posicionar a 50mm do fim da página (rodapé)
+    pdf.set_y(-65)
+    pdf.set_font("Arial", "B", 16)
+    pdf.cell(200, 10, "Recomendação", ln=1, align="C")
+    pdf.set_font("Arial", "", 12)
+    pdf.cell(200, 8, f"Recomendamos a manutenção do contrato", ln=1, align="C")
+    pdf.cell(200, 8, f"para garantir a proteção contínua dos equipamentos", ln=1, align="C")
+    pdf.cell(200, 8, f"contra futuras anomalias solares.", ln=1, align="C")
+    pdf.set_font("Arial", "I", 12)
+    pdf.cell(200, 8, f"A Auron custa menos que 3 minutos de downtime.", ln=1, align="C")
+
+    pdf.ln(5)
+    # Salvar o arquivo
+    pdf.output(f"./relatorios/relatorio_{name_empresa}_{datetime.datetime.now().strftime('%d_%m_%Y')}.pdf") # Os relatórios são armazenados por dia, não é possivel ter mais de um relatório no mesmo dia
+    print(f"Relatório gerado com sucesso!\n\n")
+        
+def alertas_ativos():
     # colocar cor para cada tipo de alerta (verde, amarelo, vermelho) e destacar o nome da empresa
     with open("empresas.json", "r", encoding="utf-8") as f:
         empresas = json.load(f).get("empresas", [])
@@ -300,16 +477,11 @@ def Alertas_ativos():
                     if evento['auron_acionado'] == True:
                         print(f"\nEvento Solar Ativo: {evento['tipo_evento']} - Nível de Alerta: {evento['nivel_alerta']}")
                     
-                
-    
-    
-    
-    
-    
 #Login, com nome da empresa e senha, para acessar o dashboard completo, com gráficos de desempenho, ROI e alertas personalizados.
-name_login = login()
+name_login, name_empresa = login()
 
 while True:
+    limpar_tela()
     sortear_evento()
     menu()
     opcao = input("\nEscolha uma opção: ")
@@ -332,7 +504,7 @@ while True:
             calcular_dano()
         case "3":
             limpar_tela()
-            Alertas_ativos()
+            alertas_ativos()
             input("Pressione Enter para retornar ao menu...")
         case "4":
             limpar_tela()
@@ -342,7 +514,7 @@ while True:
             print("\nFuncionalidade de Previsão de Tempestades em desenvolvimento. Fique atento às próximas atualizações!")
             input("Pressione Enter para retornar ao menu...")
         case "6":
-            print("\nFuncionalidade de ROI em desenvolvimento. Fique atento às próximas atualizações!")
+            gerar_relatorio()
             input("Pressione Enter para retornar ao menu...")
         case "7":
             print("\nFuncionalidade de Dashboard Completo em desenvolvimento. Fique atento às próximas atualizações!")

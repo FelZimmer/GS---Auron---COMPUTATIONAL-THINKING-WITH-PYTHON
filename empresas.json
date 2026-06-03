@@ -21,7 +21,8 @@
           "tempo_resposta_min": 12,
           "dano_potencial": 1250000.0,
           "dano_evitado": 1062500.0,
-          "custo_reparo": 187500.0
+          "custo_reparo": 187500.0,
+          "custo_manutencao_mensal": 1200.0
         },
         {
           "id": 2,
@@ -35,7 +36,8 @@
           "tempo_resposta_min": null,
           "dano_potencial": 95000.0,
           "dano_evitado": 0.0,
-          "custo_reparo": 95000.0
+          "custo_reparo": 95000.0,
+          "custo_manutencao_mensal": 450.0
         },
         {
           "id": 3,
@@ -49,7 +51,8 @@
           "tempo_resposta_min": 8,
           "dano_potencial": 620000.0,
           "dano_evitado": 527000.0,
-          "custo_reparo": 93000.0
+          "custo_reparo": 93000.0,
+          "custo_manutencao_mensal": 850.0
         },
         {
           "id": 4,
@@ -63,7 +66,23 @@
           "tempo_resposta_min": 10,
           "dano_potencial": 1890000.0,
           "dano_evitado": 1606500.0,
-          "custo_reparo": 283500.0
+          "custo_reparo": 283500.0,
+          "custo_manutencao_mensal": 1200.0
+        },
+        {
+          "id": 4,
+          "data_hora": "2026-05-10 00:05",
+          "tipo_evento": "Ejeção de Massa Coronal",
+          "intensidade_nT": 521,
+          "duracao_min": 130,
+          "equipamento_risco": "Servidores",
+          "nivel_alerta": "Crítico",
+          "auron_acionado": true,
+          "tempo_resposta_min": 10,
+          "dano_potencial": 1890000.0,
+          "dano_evitado": 1606500.0,
+          "custo_reparo": 283500.0,
+          "custo_manutencao_mensal": 1200.0
         }
       ]
     },
@@ -88,7 +107,8 @@
           "tempo_resposta_min": 11,
           "dano_potencial": 380000.0,
           "dano_evitado": 323000.0,
-          "custo_reparo": 57000.0
+          "custo_reparo": 57000.0,
+          "custo_manutencao_mensal": 300.0
         },
         {
           "id": 2,
@@ -102,7 +122,8 @@
           "tempo_resposta_min": null,
           "dano_potencial": 55000.0,
           "dano_evitado": 0.0,
-          "custo_reparo": 55000.0
+          "custo_reparo": 55000.0,
+          "custo_manutencao_mensal": 450.0
         },
         {
           "id": 3,
@@ -116,7 +137,8 @@
           "tempo_resposta_min": 9,
           "dano_potencial": 1100000.0,
           "dano_evitado": 935000.0,
-          "custo_reparo": 165000.0
+          "custo_reparo": 165000.0,
+          "custo_manutencao_mensal": 1200.0
         },
         {
           "id": 4,
@@ -130,7 +152,8 @@
           "tempo_resposta_min": null,
           "dano_potencial": 78000.0,
           "dano_evitado": 0.0,
-          "custo_reparo": 78000.0
+          "custo_reparo": 78000.0,
+          "custo_manutencao_mensal": 600.0
         }
       ]
     },
@@ -155,7 +178,8 @@
           "tempo_resposta_min": 13,
           "dano_potencial": 870000.0,
           "dano_evitado": 739500.0,
-          "custo_reparo": 130500.0
+          "custo_reparo": 130500.0,
+          "custo_manutencao_mensal": 1200.0
         },
         {
           "id": 2,
@@ -169,7 +193,8 @@
           "tempo_resposta_min": 7,
           "dano_potencial": 460000.0,
           "dano_evitado": 391000.0,
-          "custo_reparo": 69000.0
+          "custo_reparo": 69000.0,
+          "custo_manutencao_mensal": 850.0
         },
         {
           "id": 3,
@@ -183,7 +208,8 @@
           "tempo_resposta_min": null,
           "dano_potencial": 62000.0,
           "dano_evitado": 0.0,
-          "custo_reparo": 62000.0
+          "custo_reparo": 62000.0,
+          "custo_manutencao_mensal": 300.0
         },
         {
           "id": 4,
@@ -197,7 +223,8 @@
           "tempo_resposta_min": 11,
           "dano_potencial": 1670000.0,
           "dano_evitado": 1419500.0,
-          "custo_reparo": 250500.0
+          "custo_reparo": 250500.0,
+          "custo_manutencao_mensal": 1200.0
         }
       ]
     },
@@ -222,7 +249,8 @@
           "tempo_resposta_min": 10,
           "dano_potencial": 990000.0,
           "dano_evitado": 841500.0,
-          "custo_reparo": 148500.0
+          "custo_reparo": 148500.0,
+          "custo_manutencao_mensal": 1200.0
         },
         {
           "id": 2,
@@ -236,7 +264,8 @@
           "tempo_resposta_min": 14,
           "dano_potencial": 310000.0,
           "dano_evitado": 263500.0,
-          "custo_reparo": 46500.0
+          "custo_reparo": 46500.0,
+          "custo_manutencao_mensal": 450.0
         },
         {
           "id": 3,
@@ -250,7 +279,8 @@
           "tempo_resposta_min": null,
           "dano_potencial": 71000.0,
           "dano_evitado": 0.0,
-          "custo_reparo": 71000.0
+          "custo_reparo": 71000.0,
+          "custo_manutencao_mensal": 300.0
         },
         {
           "id": 4,
@@ -264,133 +294,38 @@
           "tempo_resposta_min": 16,
           "dano_potencial": 540000.0,
           "dano_evitado": 459000.0,
-          "custo_reparo": 81000.0
-        }
-      ]
-    },
-    {
-      "id": 5,
-      "nome": "Focus",
-      "estado": "São Paulo",
-      "usuario": "focus",
-      "senha": "focus@2026",
-      "tipo": "Data Center",
-      "eventos": []
-    },
-    {
-      "id": 6,
-      "nome": "itau",
-      "estado": "Rio de Janeiro",
-      "usuario": "itubers",
-      "senha": "itau@2026",
-      "tipo": "Data Center",
-      "eventos": []
-    },
-    {
-      "id": 7,
-      "nome": "stro",
-      "estado": "São Paulo",
-      "usuario": "stor",
-      "senha": "stro",
-      "tipo": "Data Center",
-      "eventos": [
-        {
-          "id": 27,
-          "data_hora": "2026-06-01 11:48",
-          "tipo_evento": "Tempestade GeomagnÃ©tica",
-          "intensidade_nT": 423,
-          "duracao_min": 65,
-          "equipamento_risco": "Servidores",
-          "nivel_alerta": "CrÃ­tico",
-          "auron_acionado": true,
-          "tempo_resposta_min": 10,
-          "dano_potencial": 1120000.0,
-          "dano_evitado": 952000.0,
-          "custo_reparo": 168000.0
+          "custo_reparo": 81000.0,
+          "custo_manutencao_mensal": 850.0
         },
         {
-          "id": 3,
-          "data_hora": "2026-05-07 18:30",
-          "tipo_evento": "Tempestade GeomagnÃ©tica",
-          "intensidade_nT": 312,
-          "duracao_min": 57,
-          "equipamento_risco": "Inversores Solares",
-          "nivel_alerta": "Alerta",
-          "auron_acionado": true,
-          "tempo_resposta_min": 8,
-          "dano_potencial": 620000.0,
-          "dano_evitado": 527000.0,
-          "custo_reparo": 93000.0
-        },
-        {
-          "id": 14,
-          "data_hora": "2026-05-16 23:40",
-          "tipo_evento": "EjeÃ§Ã£o de Massa Coronal",
-          "intensidade_nT": 509,
-          "duracao_min": 115,
-          "equipamento_risco": "Servidores",
-          "nivel_alerta": "CrÃ­tico",
-          "auron_acionado": true,
-          "tempo_resposta_min": 10,
-          "dano_potencial": 1750000.0,
-          "dano_evitado": 1487500.0,
-          "custo_reparo": 262500.0
-        },
-        {
-          "id": 3,
-          "data_hora": "2026-05-07 18:30",
-          "tipo_evento": "Tempestade GeomagnÃ©tica",
-          "intensidade_nT": 312,
-          "duracao_min": 57,
-          "equipamento_risco": "Inversores Solares",
-          "nivel_alerta": "Alerta",
-          "auron_acionado": true,
-          "tempo_resposta_min": 8,
-          "dano_potencial": 620000.0,
-          "dano_evitado": 527000.0,
-          "custo_reparo": 93000.0
-        },
-        {
-          "id": 25,
-          "data_hora": "2026-05-30 20:17",
+          "id": 9,
+          "data_hora": "2026-05-02 06:18",
           "tipo_evento": "Vento Solar Intenso",
-          "intensidade_nT": 167,
-          "duracao_min": 175,
-          "equipamento_risco": "PainÃ©is Fotovoltaicos",
+          "intensidade_nT": 334,
+          "duracao_min": 120,
+          "equipamento_risco": "Servidores",
           "nivel_alerta": "Alerta",
           "auron_acionado": true,
-          "tempo_resposta_min": 15,
-          "dano_potencial": 290000.0,
-          "dano_evitado": 246500.0,
-          "custo_reparo": 43500.0
+          "tempo_resposta_min": 11,
+          "dano_potencial": 710000.0,
+          "dano_evitado": 603500.0,
+          "custo_reparo": 106500.0,
+          "custo_manutencao_mensal": 1200.0
         },
         {
-          "id": 26,
-          "data_hora": "2026-05-31 03:33",
-          "tipo_evento": "Rajada de Raios CÃ³smicos",
-          "intensidade_nT": 84,
-          "duracao_min": 290,
+          "id": 22,
+          "data_hora": "2026-05-27 00:52",
+          "tipo_evento": "Rajada de Raios Cósmicos",
+          "intensidade_nT": 91,
+          "duracao_min": 320,
           "equipamento_risco": "Roteadores e Switches",
-          "nivel_alerta": "AtenÃ§Ã£o",
+          "nivel_alerta": "Atenção",
           "auron_acionado": false,
           "tempo_resposta_min": null,
-          "dano_potencial": 35000.0,
+          "dano_potencial": 39000.0,
           "dano_evitado": 0.0,
-          "custo_reparo": 35000.0
-        },
-        {
-          "id": 11,
-          "data_hora": "2026-05-08 21:05",
-          "tipo_evento": "EjeÃ§Ã£o de Massa Coronal",
-          "intensidade_nT": 463,
-          "duracao_min": 102,
-          "equipamento_risco": "Servidores",
-          "nivel_alerta": "CrÃ­tico",
-          "auron_acionado": true,
-          "tempo_resposta_min": 8,
-          "dano_potencial": 1380000.0,
-          "dano_evitado": 1173000.0,
-          "custo_reparo": 207000.0
+          "custo_reparo": 39000.0,
+          "custo_manutencao_mensal": 300.0
         }
       ]
     }
