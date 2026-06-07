@@ -68,5 +68,5 @@ Este projeto foi desenvolvido para fins educacionais e demonstrativos.
 Desenvolvido como parte do curso de Pensamento Computacional com Python
 
 ## A fazer
- - Adicionar função de planos da plataforma (Básico, Premium, etc.)
  - Tratamento de erro/validação no login e cadastro
+ - Criar função de dashboard completo

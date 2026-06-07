@@ -58,7 +58,8 @@ def cadastrar_empresa():
         "usuario": usuario,
         "senha": senha,
         "tipo": "Data Center",
-        "eventos": []
+        "eventos": [],
+        "eventos_previstos": []
 })
 
     with open("empresas.json", "w", encoding="utf-8") as f:
@@ -139,9 +140,9 @@ def sortear_evento():
     except (FileNotFoundError, json.JSONDecodeError):
             data = {"empresas": []}
 
-    for empresa in data["empresas"]:
-        if empresa["usuario"] == name_login:
-            empresa["eventos"].append(evento_aleatorio)
+    for empresa in data.get("empresas"):
+        if empresa.get("usuario") == name_login:
+            empresa.get("eventos").append(evento_aleatorio)
 
     with open("empresas.json", "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
@@ -292,10 +293,24 @@ def historico_eventos():
             for empresa in empresas:
                 if empresa["usuario"] == name_login:
                     eventos = empresa["eventos"]
+                    eventos_previstos = empresa["eventos_previstos"]
+                    if eventos_previstos:
+                        pdf.set_font("Arial", "B", 14)
+                        pdf.cell(200, 10, f"Eventos Previstos:", ln=1)
+                        for evento in eventos_previstos:
+                            pdf.set_font("Arial", "", 12)
+                            pdf.cell(200, 5, f"Data/Hora: {evento['data_previsao']}", ln=1)
+                            pdf.cell(200, 5, f"Tipo: {evento['tipo_evento']}", ln=1)
+                            pdf.cell(200, 5, f"Intensidade: {evento['intensidade_nT']} nT", ln=1)
+                            pdf.cell(200, 5, f"Duração: {evento['duracao_min']} min", ln=1)
+                            pdf.cell(200, 5, f"Nível de Alerta: {evento['nivel_alerta']}", ln=1)
+                            pdf.cell(200, 10, "-"*50, ln=1)
+                            if pdf.get_y() > 200:
+                                pdf.add_page()
                     if eventos:
+                        pdf.set_font("Arial", "B", 14)
+                        pdf.cell(200, 10, f"Eventos Anteriores:", ln=1)
                         for evento in eventos:
-                            pdf.set_font("Arial", "B", 14)
-                            pdf.cell(200, 10, f"Evento #{evento['id']}", ln=1)
                             pdf.set_font("Arial", '', 12)
                             pdf.cell(200, 5, f"Data/Hora: {evento['data_hora']}", ln=1)
                             pdf.cell(200, 5, f"Tipo: {evento['tipo_evento']}", ln=1)
@@ -341,30 +356,30 @@ def gerar_relatorio_roi():
         with open("empresas.json", "r", encoding="utf-8") as f:
             empresas = json.load(f).get("empresas", [])
         for empresa in empresas:
-            if empresa["usuario"] == name_login:
-                eventos = empresa["eventos"]
+            if empresa.get("usuario") == name_login:
+                eventos = empresa.get("eventos", [])
                 if eventos:
                     total_eventos = len(eventos)
                     for e in eventos:
-                        eventos_com_auron += 1 if e["auron_acionado"] == True else 0
-                        eventos_sem_protecao += 1 if e["auron_acionado"] == False else 0
-                        total_dano_potencial += e["dano_potencial"]
-                        total_dano_evitado += e["dano_potencial"] if e["auron_acionado"] == True else 0
-                        total_custo_reparo += e["custo_reparo"] if e["auron_acionado"] == False else 0 
+                        eventos_com_auron += 1 if e.get("auron_acionado") == True else 0
+                        eventos_sem_protecao += 1 if e.get("auron_acionado") == False else 0
+                        total_dano_potencial += e.get("dano_potencial")
+                        total_dano_evitado += e.get("dano_potencial") if e.get("auron_acionado") == True else 0
+                        total_custo_reparo += e.get("custo_reparo") if e.get("auron_acionado") == False else 0 
                         percentual_protecao = f"{(total_dano_evitado / total_dano_potencial) * 100:.2f}%" if total_dano_potencial > 0 else 0
-                        tempo_resposta_total += e["tempo_resposta_min"] if e["auron_acionado"] == True else 0
+                        tempo_resposta_total += e.get("tempo_resposta_min") if e.get("auron_acionado") == True else 0
                         if eventos_com_auron > 0:
                             tempo_resposta_medio = tempo_resposta_total // eventos_com_auron
                         else:
                             tempo_resposta_medio = 0
-                        if e["auron_acionado"] == True:
-                            if e["intensidade_nT"] > evento_maior_intensidade:
-                                evento_maior_intensidade = e["intensidade_nT"]
-                            custo_manutencao_total += e["custo_manutencao_mensal"]
+                        if e.get("auron_acionado") == True:
+                            if e.get("intensidade_nT") > evento_maior_intensidade:
+                                evento_maior_intensidade = e.get("intensidade_nT")
+                            custo_manutencao_total += e.get("custo_manutencao_mensal")
                             
                         else:
-                            if e["equipamento_risco"] not in equipamentos_afetados:
-                                equipamentos_afetados.append(e["equipamento_risco"])
+                            if e.get("equipamento_risco") not in equipamentos_afetados:
+                                equipamentos_afetados.append(e.get("equipamento_risco"))
                     custo_total_com_protecao = custo_manutencao_total + mensalidade_auron_solar
                     custo_total_sem_protecao = total_dano_potencial + total_custo_reparo + custo_manutencao_total
                     economia_gerada = custo_total_sem_protecao - custo_total_com_protecao
@@ -507,6 +522,55 @@ def alertas_ativos():
 #Login, com nome da empresa e senha, para acessar o dashboard completo, com gráficos de desempenho, ROI e alertas personalizados.
 name_login, name_empresa = tela_inicial()
 
+def prever_evento():
+    evento_previsto = random.choice(["Ejeção de Massa Coronal", "Rajada de Raios Cósmicos", "Tempestade Geomagnética", "Vento Solar Intenso", "Explosão Solar de Classe M", "Explosão Solar de Classe X", "Nenhum evento solar significativo detectado"])
+    if evento_previsto == "Ejeção de Massa Coronal":
+        intensidade_nT = random.randint(180, 550)
+        duracao_min = random.randint(30, 150)
+        nivel_alerta = random.choice(["Alerta", "Crítico"])
+    elif evento_previsto == "Rajada de Raios Cósmicos":
+        intensidade_nT = random.randint(50, 120)
+        duracao_min = random.randint(240, 480)
+        nivel_alerta = random.choice(["Atenção"])
+    elif evento_previsto == "Tempestade Geomagnética":
+        intensidade_nT = random.randint(150, 400)
+        duracao_min = random.randint(45, 180)
+        nivel_alerta = random.choice(["Alerta", "Crítico"])
+    elif evento_previsto == "Vento Solar Intenso":
+        intensidade_nT = random.randint(80, 300)
+        duracao_min = random.randint(60, 300)
+        nivel_alerta = random.choice(["Alerta", "Atenção"])
+    elif evento_previsto == "Explosão Solar de Classe M":
+        intensidade_nT = random.randint(150, 250)
+        duracao_min = random.randint(60, 120)
+        nivel_alerta = random.choice(["Alerta", "Crítico"])
+    elif evento_previsto == "Explosão Solar de Classe X":
+        intensidade_nT = random.randint(500, 650)
+        duracao_min = random.randint(120, 200)
+        nivel_alerta = random.choice(["Crítico"])
+    elif evento_previsto == "Nenhum evento solar significativo detectado":
+        intensidade_nT = 0
+        duracao_min = 0
+        nivel_alerta = "Tranquilo"
+    data_previsao = datetime.datetime.now() + datetime.timedelta(days=random.randint(1, 30))
+    
+    if intensidade_nT > 0:
+        with open("empresas.json", "r", encoding="utf-8") as f:
+            data = json.load(f)
+            for empresa in data["empresas"]:
+                if empresa['usuario'] == name_login:
+                    empresa['eventos_previstos'].append({
+                        "tipo_evento": evento_previsto,
+                        "intensidade_nT": intensidade_nT,
+                        "duracao_min": duracao_min,
+                        "nivel_alerta": nivel_alerta,
+                        "data_previsao": data_previsao.strftime("%d/%m/%Y %H:%M")
+                    })
+                    with open("empresas.json", "w", encoding="utf-8") as f:
+                        json.dump(data, f, indent=2, ensure_ascii=False)
+
+    
+
 while True:
     limpar_tela()
     sortear_evento()
@@ -538,7 +602,8 @@ while True:
             historico_eventos()
             input("Pressione Enter para retornar ao menu...")
         case "5":
-            print("\nFuncionalidade de Previsão de Tempestades em desenvolvimento. Fique atento às próximas atualizações!")
+            limpar_tela()
+            prever_evento()
             input("Pressione Enter para retornar ao menu...")
         case "6":
             gerar_relatorio_roi()
