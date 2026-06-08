@@ -6,6 +6,11 @@ import os
 import logging
 from fpdf import FPDF
 import datetime
+from rich.console import Console
+from rich.panel import Panel
+from rich.table import Table
+from rich.text import Text
+console = Console()
 
 ESTADOS_BRASIL = {
     "AC": "Acre", "AL": "Alagoas", "AP": "Amapá", "AM": "Amazonas",
@@ -32,6 +37,12 @@ if not logger.handlers:
     logger.addHandler(fh)
 
 logger.info("Inicializando módulo Gs_Menu")
+
+
+def titulo_terminal(titulo, subtitulo=None, estilo="bold cyan"):
+    conteudo = titulo if not subtitulo else f"{titulo}\n{subtitulo}"
+    console.print(Panel(conteudo, style=estilo, expand=False))
+
 def limpar_tela():
     # nt = indentifica o Windows e executa o comando 'cls', else = clear para Linux/Mac
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -40,23 +51,27 @@ def limpar_tela():
 
 def escolher_estado():    
     while True:
-        print("\nEscolha o estado onde sua empresa está localizada:")
+        console.rule("[bold cyan]Seleção de Estado[/]")
+        tabela = Table(show_header=True, header_style="bold magenta", box=None)
+        tabela.add_column("Sigla", style="bold yellow", width=8)
+        tabela.add_column("Estado", style="white")
         for sigla, estado in ESTADOS_BRASIL.items():
-            print(f"{sigla} - {estado}")
+            tabela.add_row(sigla, estado)
+        console.print(tabela)
             
         escolha = input("\nDigite a sigla correspondente ao seu estado: ")
         
         try:
             for sigla, nome_estado in ESTADOS_BRASIL.items():
                 if escolha.upper() == sigla:
-                    print(f"Você selecionou: {nome_estado}")
+                    console.print(f"[green]Você selecionou:[/] [bold]{nome_estado}[/]")
                     return nome_estado
 
         except Exception as e:
-            print(f"Erro encontrado: {e}")
+            console.print(f"[red]Erro encontrado:[/] {e}")
 
 def cadastrar_empresa():
-    print("\nBem-vindo ao Auron — Plataforma de Proteção Solar B2B")
+    titulo_terminal("AURON", "Plataforma de Proteção Solar B2B", "bold blue")
     nome_empresa = input("Digite o nome da sua empresa: ")
     regiao = escolher_estado()
     usuario = input("Crie um nome de usuário para acessar o dashboard: ").lower()
@@ -84,12 +99,12 @@ def cadastrar_empresa():
     with open("empresas.json", "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
     
-    print(f"\nCadastro concluído! ")
+    console.print("[bold green]Cadastro concluído![/]")
     return login()
             
 def login():
     limpar_tela()
-    print("\n--- Dashboard Login ---")
+    console.rule("[bold cyan]Dashboard Login[/]")
     usuario_input = input("Nome de usuário: ").strip().lower()
     senha_input = input("Senha: ").strip()
 
@@ -109,28 +124,28 @@ def login():
 
         if empresa_logada:
             logger.info(f"Login bem-sucedido para usuario: {usuario_input}")
-            print(f"\nLogin bem-sucedido! Bem-vindo, {empresa_logada['nome']}!")
+            console.print(Panel(f"Bem-vindo, [bold]{empresa_logada['nome']}[/]", style="bold green"))
             return empresa_logada["usuario"], empresa_logada["nome"]  # Retorna o nome de usuário para uso posterior 
         else:
             logger.warning(f"Falha de login para usuario: {usuario_input}")
-            print("\nUsuário ou senha incorreto(s).")
+            console.print("[bold red]Usuário ou senha incorreto(s).[/]")
             match int(input("""Selecione uma opção:\n
 1. Cadastro
 2. Tentar novamente \nDigite: """)):
                 case 1:
                     return cadastrar_empresa()
                 case 2:
-                    print("\nTente novamente fazer login.")
+                    console.print("[yellow]Tente novamente fazer login.[/]")
                     return login()
                 case _:
-                    print("Opção inválida. Retornando ao menu principal.")
+                    console.print("[red]Opção inválida. Retornando ao menu principal.[/]")
                     return None, None
 
     except FileNotFoundError:
-        print("\nErro: Arquivo 'empresas.json' não encontrado.")
+        console.print("[bold red]Erro:[/] Arquivo 'empresas.json' não encontrado.")
         return None, None
     except json.JSONDecodeError:
-        print("\nErro: Arquivo de dados corrompido.")
+        console.print("[bold red]Erro:[/] Arquivo de dados corrompido.")
         return None, None
     
     
@@ -139,14 +154,14 @@ def salvar_sessao(usuario, nome):
         json.dump({"usuario": usuario, "nome": nome}, f, ensure_ascii=False, indent=2)
 
 def tela_inicial():
-    print("\nBem-vindo ao Auron — Plataforma de Proteção Solar B2B")
+    titulo_terminal("AURON", "Plataforma de Proteção Solar B2B", "bold cyan")
     match input("\n1. Fazer Login \n2. Cadastrar sua Empresa\nDigite: "):
         case "1":
             return login()
         case "2":
             return cadastrar_empresa()
         case _:
-            print("Opção inválida. Retornando ao menu principal.")
+            console.print("[red]Opção inválida. Retornando ao menu principal.[/]")
             tela_inicial()
 
 def sortear_evento():
@@ -157,12 +172,16 @@ def sortear_evento():
             evento_aleatorio = random.choice(data["eventos"])
             evento_aleatorio["data_hora"] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
             logger.info(f"Evento solar detectado: {evento_aleatorio.get('tipo_evento')} - nivel {evento_aleatorio.get('nivel_alerta')}")
-            print(f"\n Evento Solar Detectado: {evento_aleatorio['tipo_evento']}")
-            print(f" Data/Hora: {evento_aleatorio['data_hora']}")
-            print(f" Status: {evento_aleatorio['nivel_alerta']}") # Pintar de acordo com o nível de alerta
+            console.print(Panel(
+                f"[bold yellow]Evento Solar Detectado:[/] {evento_aleatorio['tipo_evento']}\n"
+                f"[bold white]Data/Hora:[/] {evento_aleatorio['data_hora']}\n"
+                f"[bold white]Status:[/] [bold red]{evento_aleatorio['nivel_alerta']}[/]",
+                title="[bold red]Alerta[/]",
+                border_style="red"
+            ))
     else:
         logger.debug("Nenhum evento solar significativo detectado no sorteio")
-        print(" Nenhum evento solar significativo detectado.")
+        console.print("[green]Nenhum evento solar significativo detectado.[/]")
         return
 
     try:
@@ -183,18 +202,18 @@ def sortear_evento():
     
 
 def menu():
-    print("="*50)
-    print(""" ℙ𝕝𝕒𝕥𝕒𝕗𝕠𝕣𝕞𝕒 𝕕𝕖 ℙ𝕣𝕠𝕥𝕖𝕔̧𝕒̃𝕠 𝕊𝕠𝕝𝕒𝕣 𝔹𝟚𝔹 """)
-    print("="*50)
-    print()
-    print(" 1. Sobre a solução Auron")
-    print(" 2. Simulação de Impacto de Anomalia")
-    print(" 3. Alertas Ativos")
-    print(" 4. Histórico de Eventos")
-    print(" 5. Previsão de Tempestades")
-    print(" 6. ROI — Custos Evitados e Desempenho")
-    print(" 7. Dashboard Completo")
-    print(" 0. Sair")
+    tabela = Table(title="AURON — Plataforma de Proteção Solar B2B", box=None, show_header=False)
+    tabela.add_column("Opção", style="bold green", width=8)
+    tabela.add_column("Descrição", style="white")
+    tabela.add_row("1", "Sobre a solução Auron")
+    tabela.add_row("2", "Simulação de Impacto de Anomalia")
+    tabela.add_row("3", "Alertas Ativos")
+    tabela.add_row("4", "Histórico de Eventos")
+    tabela.add_row("5", "Previsão de Tempestades")
+    tabela.add_row("6", "ROI — Custos Evitados e Desempenho")
+    tabela.add_row("7", "Dashboard Completo")
+    tabela.add_row("0", "Sair")
+    console.print(Panel(tabela, border_style="cyan"))
     
 
 
@@ -263,41 +282,38 @@ def calcular_dano():
         fig.suptitle("AURON — Simulação de Impacto de Anomalias Solares", fontsize=13, fontweight="bold")
 
         dano_maximo = funcao_polinomial(eixos[0])   
-        print("  " + "="*50)
-        print("\n  AURON — Simulação de Impacto de Anomalias Solares \n")
-        print("  " + "="*50)
-        print(f"\n  Intensidade máxima simulada resultou em "f"R$ {dano_maximo:.2f} de dano potencial.")
+        console.rule("[bold cyan]AURON — Simulação de Impacto de Anomalias Solares[/]")
+        console.print(f"[bold]Intensidade máxima simulada resultou em[/] [green]R$ {dano_maximo:.2f}[/] de dano potencial.")
 
         if dano_maximo > 0:
-            print("  Evento solar detectado — simulando crescimento do dano")
+            console.print("[yellow]Evento solar detectado — simulando crescimento do dano[/]")
             dano_final = funcao_exponencial(eixos[1], dano_maximo)
-            print(f"  Dano máximo sem proteção: R$ {dano_final:.2f}")
-            print(f"  Com a Auron (ação em t=15min), o dano foi contido.\n")
+            console.print(f"[red]Dano máximo sem proteção:[/] R$ {dano_final:.2f}")
+            console.print("[green]Com a Auron (ação em t=15min), o dano foi contido.[/]")
         else:
             eixos[1].set_visible(False)
-            print("\n  Simulação concluída — sem danos estimados para a intensidade atual.\n")
-            print("  Nenhum evento solar significativo detectado.")
-            print("  A infraestrutura está segura — monitoramento ativo.\n")
+            console.print("[green]Simulação concluída — sem danos estimados para a intensidade atual.[/]")
+            console.print("[green]Nenhum evento solar significativo detectado.[/]")
+            console.print("[green]A infraestrutura está segura — monitoramento ativo.[/]")
 
         plt.tight_layout()
         plt.show()
         input("\nPressione Enter para retornar ao menu...")
 
     except Exception as e:
-        print(f"Erro encontrado: {e}")
+        console.print(f"[bold red]Erro encontrado:[/] {e}")
 
 
 def sobre():
-    print("\n")
-    print("              𝕊𝕠𝕓𝕣𝕖 𝕒 𝔸𝕦𝕣𝕠𝕟               ")
-    print("\n" + "="*50)
-    print("AURON é uma plataforma B2B de monitoramento e")
-    print("proteção contra anomalias solares. Integra dados")
-    print("orbitais em tempo real com IA preditiva para")
-    print("acionar automações de segurança em data centers")
-    print("e instalações de energia solar.")
-    print("="*50)
-    print()
+    console.print(Panel(
+        "AURON é uma plataforma B2B de monitoramento e\n"
+        "proteção contra anomalias solares. Integra dados\n"
+        "orbitais em tempo real com IA preditiva para\n"
+        "acionar automações de segurança em data centers\n"
+        "e instalações de energia solar.",
+        title="[bold cyan]Sobre a Auron[/]",
+        border_style="cyan"
+    ))
     input("Pressione Enter para retornar ao menu...")
 
 def historico_eventos():
@@ -357,10 +373,10 @@ def historico_eventos():
                             pdf.cell(200, 10, "-"*50, ln=1)
                             if pdf.get_y() > 200:
                                 pdf.add_page()
-                    pdf.output(f"./relatorios/relatorio_eventos_{name_empresa}_{datetime.datetime.now().strftime('%d_%m_%Y')}.pdf")
-                    print(f"Relatório gerado com sucesso!\n")
+        pdf.output(f"./relatorios/relatorio_eventos_{name_empresa}_{datetime.datetime.now().strftime('%d_%m_%Y')}.pdf")
+        console.print("[bold green]Relatório gerado com sucesso![/]")
     except Exception as e:
-        print(f"Erro ao gerar relatório: {e}")
+        console.print(f"[bold red]Erro ao gerar relatório:[/] {e}")
 
 
 def gerar_relatorio_roi():
@@ -417,7 +433,7 @@ def gerar_relatorio_roi():
                     economia_gerada = custo_total_sem_protecao - custo_total_com_protecao
                     
     except Exception as e:
-        print(f"Erro encontrado: {e}")
+        console.print(f"[bold red]Erro encontrado:[/] {e}")
     
     # Configurar a página do PDF
     pdf = FPDF()
@@ -535,21 +551,22 @@ def gerar_relatorio_roi():
     pdf.ln(5)
     # Salvar o arquivo
     pdf.output(f"./relatorios/relatorio_roi_{name_empresa}_{datetime.datetime.now().strftime('%d_%m_%Y')}.pdf") # Os relatórios são armazenados por dia, não é possivel ter mais de um relatório no mesmo dia
-    print(f"Relatório gerado com sucesso!\n\n")
+    console.print("[bold green]Relatório gerado com sucesso![/]")
         
 def alertas_ativos():
     # colocar cor para cada tipo de alerta (verde, amarelo, vermelho) e destacar o nome da empresa
     with open("empresas.json", "r", encoding="utf-8") as f:
         empresas = json.load(f).get("empresas", [])
-        print("\n" + "="*50)
-        print(f"\nAlertas Ativos para {name_login}:")
-        print("\n" + "="*50)
+        console.rule(f"[bold cyan]Alertas Ativos para {name_login}[/]")
         for empresa in empresas:
             if empresa['usuario'] == name_login:
                 eventos = empresa['eventos']
                 for evento in eventos:
                     if evento['auron_acionado'] == True:
-                        print(f"\nEvento Solar Ativo: {evento['tipo_evento']} - Nível de Alerta: {evento['nivel_alerta']}")
+                        console.print(Panel(
+                            f"[bold]Evento Solar Ativo:[/] {evento['tipo_evento']}\n[bold]Nível de Alerta:[/] {evento['nivel_alerta']}",
+                            border_style="yellow"
+                        ))
                     
 #Login, com nome da empresa e senha, para acessar o dashboard completo, com gráficos de desempenho, ROI e alertas personalizados.
 name_login, name_empresa = tela_inicial()
@@ -604,6 +621,13 @@ def prever_evento():
                     })
                     with open("empresas.json", "w", encoding="utf-8") as f:
                         json.dump(data, f, indent=2, ensure_ascii=False)
+        console.print(Panel(
+                f"[bold yellow]Evento Solar Detectado:[/] {evento_previsto}\n"
+                f"[bold white]Data/Hora:[/] {data_previsao.strftime('%d/%m/%Y %H:%M')}\n"
+                f"[bold white]Status:[/] [bold red]{nivel_alerta}[/]",
+                title="[bold red]Alerta[/]",
+                border_style="red"
+            ))
 
  
 
@@ -645,12 +669,12 @@ while True:
             gerar_relatorio_roi()
             input("Pressione Enter para retornar ao menu...")
         case "7":
-            os.system('start cmd /k python -m streamlit run dashboard.py')
+            os.system('start cmd /k streamlit run dashboard.py')
             limpar_tela()
         case "0":
             limpar_tela()
-            print(f"\nSaindo do sistema Auron. Até a próxima {name_login}!")
+            console.print(f"[bold cyan]Saindo do sistema Auron. Até a próxima {name_login}![/]")
             break
         case _:
-            print(" Opção inválida. Tente novamente.")
+            console.print("[bold red]Opção inválida. Tente novamente.[/]")
             

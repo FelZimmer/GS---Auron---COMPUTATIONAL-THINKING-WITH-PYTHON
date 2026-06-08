@@ -7,6 +7,8 @@ from filelock import FileLock, Timeout
 from fpdf import FPDF
 import pandas as pd
 import plotly.express as px
+from rich.console import Console
+console = Console()
 
 # Config
 BASE_DIR = os.getcwd()

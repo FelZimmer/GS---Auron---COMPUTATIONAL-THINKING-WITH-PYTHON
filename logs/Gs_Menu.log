@@ -1,0 +1,158 @@
+2026-06-08 19:36:44,200 - INFO - Inicializando módulo Gs_Menu
+2026-06-08 19:37:04,848 - INFO - Iniciando cadastro de empresa: a (usuario=a)
+2026-06-08 19:37:04,914 - DEBUG - limpar_tela() chamado
+2026-06-08 19:37:06,809 - INFO - Login bem-sucedido para usuario: a
+2026-06-08 19:37:06,838 - DEBUG - limpar_tela() chamado
+2026-06-08 19:37:06,840 - INFO - Evento solar detectado: Tempestade Geomagnética - nivel Atenção
+2026-06-08 19:37:06,842 - INFO - Evento Tempestade Geomagnética anexado a empresa usuario=a
+2026-06-08 19:37:24,273 - DEBUG - limpar_tela() chamado
+2026-06-08 19:37:45,010 - INFO - Inicializando módulo Gs_Menu
+2026-06-08 19:46:21,089 - INFO - Inicializando módulo Gs_Menu
+2026-06-08 19:46:25,755 - DEBUG - limpar_tela() chamado
+2026-06-08 19:46:27,753 - INFO - Login bem-sucedido para usuario: a
+2026-06-08 19:46:27,782 - DEBUG - limpar_tela() chamado
+2026-06-08 19:46:27,783 - INFO - Evento solar detectado: Vento Solar Intenso - nivel Alerta
+2026-06-08 19:46:27,789 - INFO - Evento Vento Solar Intenso anexado a empresa usuario=a
+2026-06-08 19:46:31,692 - DEBUG - limpar_tela() chamado
+2026-06-08 19:46:33,577 - DEBUG - limpar_tela() chamado
+2026-06-08 19:46:33,578 - INFO - Evento solar detectado: Explosão Solar Classe M - nivel Atenção
+2026-06-08 19:46:33,597 - INFO - Evento Explosão Solar Classe M anexado a empresa usuario=a
+2026-06-08 19:46:39,811 - DEBUG - limpar_tela() chamado
+2026-06-08 19:46:45,639 - DEBUG - limpar_tela() chamado
+2026-06-08 19:46:45,639 - DEBUG - Nenhum evento solar significativo detectado no sorteio
+2026-06-08 19:46:50,982 - DEBUG - limpar_tela() chamado
+2026-06-08 19:46:52,151 - DEBUG - limpar_tela() chamado
+2026-06-08 19:46:52,153 - INFO - Evento solar detectado: Rajada de Raios Cósmicos - nivel Atenção
+2026-06-08 19:46:52,177 - INFO - Evento Rajada de Raios Cósmicos anexado a empresa usuario=a
+2026-06-08 19:46:59,100 - DEBUG - limpar_tela() chamado
+2026-06-08 19:46:59,715 - DEBUG - limpar_tela() chamado
+2026-06-08 19:46:59,715 - DEBUG - Nenhum evento solar significativo detectado no sorteio
+2026-06-08 19:47:00,986 - DEBUG - limpar_tela() chamado
+2026-06-08 19:47:01,191 - DEBUG - limpar_tela() chamado
+2026-06-08 19:47:01,194 - DEBUG - Nenhum evento solar significativo detectado no sorteio
+2026-06-08 19:47:01,843 - DEBUG - limpar_tela() chamado
+2026-06-08 19:47:02,006 - DEBUG - limpar_tela() chamado
+2026-06-08 19:47:02,006 - DEBUG - Nenhum evento solar significativo detectado no sorteio
+2026-06-08 19:47:03,578 - DEBUG - limpar_tela() chamado
+2026-06-08 19:47:03,771 - DEBUG - limpar_tela() chamado
+2026-06-08 19:47:03,771 - DEBUG - Nenhum evento solar significativo detectado no sorteio
+2026-06-08 19:47:04,462 - DEBUG - limpar_tela() chamado
+2026-06-08 19:47:04,651 - DEBUG - limpar_tela() chamado
+2026-06-08 19:47:04,652 - DEBUG - Nenhum evento solar significativo detectado no sorteio
+2026-06-08 19:47:05,284 - DEBUG - limpar_tela() chamado
+2026-06-08 19:47:05,508 - DEBUG - limpar_tela() chamado
+2026-06-08 19:47:05,508 - DEBUG - Nenhum evento solar significativo detectado no sorteio
+2026-06-08 19:47:06,338 - DEBUG - limpar_tela() chamado
+2026-06-08 19:47:06,539 - DEBUG - limpar_tela() chamado
+2026-06-08 19:47:06,540 - INFO - Evento solar detectado: Explosão Solar Classe M - nivel Atenção
+2026-06-08 19:47:06,556 - INFO - Evento Explosão Solar Classe M anexado a empresa usuario=a
+2026-06-08 19:47:13,630 - DEBUG - limpar_tela() chamado
+2026-06-08 19:47:20,882 - DEBUG - limpar_tela() chamado
+2026-06-08 19:47:20,882 - DEBUG - Nenhum evento solar significativo detectado no sorteio
+2026-06-08 19:47:22,817 - DEBUG - limpar_tela() chamado
+2026-06-08 19:47:41,928 - DEBUG - limpar_tela() chamado
+2026-06-08 19:47:41,928 - DEBUG - Nenhum evento solar significativo detectado no sorteio
+2026-06-08 19:47:51,266 - DEBUG - limpar_tela() chamado
+2026-06-08 19:47:52,686 - DEBUG - limpar_tela() chamado
+2026-06-08 19:47:52,686 - DEBUG - Nenhum evento solar significativo detectado no sorteio
+2026-06-08 19:49:08,164 - INFO - Inicializando módulo Gs_Menu
+2026-06-08 19:49:26,702 - INFO - Inicializando módulo Gs_Menu
+2026-06-08 19:49:39,454 - DEBUG - limpar_tela() chamado
+2026-06-08 19:49:40,286 - INFO - Login bem-sucedido para usuario: a
+2026-06-08 19:49:40,317 - DEBUG - limpar_tela() chamado
+2026-06-08 19:49:40,317 - DEBUG - Nenhum evento solar significativo detectado no sorteio
+2026-06-08 19:49:52,168 - DEBUG - limpar_tela() chamado
+2026-06-08 19:50:16,962 - INFO - Inicializando módulo Gs_Menu
+2026-06-08 19:50:40,021 - INFO - Iniciando cadastro de empresa: Empresa X (usuario=adm-empresax)
+2026-06-08 19:50:40,065 - DEBUG - limpar_tela() chamado
+2026-06-08 19:50:50,623 - WARNING - Falha de login para usuario: adm-empresax
+2026-06-08 19:52:28,113 - INFO - Inicializando módulo Gs_Menu
+2026-06-08 19:53:49,594 - INFO - Inicializando módulo Gs_Menu
+2026-06-08 19:54:07,523 - INFO - Iniciando cadastro de empresa: FIAP (usuario=fiap2026)
+2026-06-08 19:54:07,574 - DEBUG - limpar_tela() chamado
+2026-06-08 19:54:13,349 - WARNING - Falha de login para usuario: fiap2026
+2026-06-08 19:54:15,015 - DEBUG - limpar_tela() chamado
+2026-06-08 19:54:21,990 - WARNING - Falha de login para usuario: fiap2026
+2026-06-08 19:55:06,517 - INFO - Inicializando módulo Gs_Menu
+2026-06-08 19:55:22,276 - INFO - Iniciando cadastro de empresa: FIAP (usuario=fiap2026)
+2026-06-08 19:55:22,320 - DEBUG - limpar_tela() chamado
+2026-06-08 19:55:28,020 - WARNING - Falha de login para usuario: fiap2026
+2026-06-08 19:55:29,185 - DEBUG - limpar_tela() chamado
+2026-06-08 19:55:34,987 - INFO - Login bem-sucedido para usuario: fiap2026
+2026-06-08 19:55:35,015 - DEBUG - limpar_tela() chamado
+2026-06-08 19:55:35,016 - INFO - Evento solar detectado: Vento Solar Intenso - nivel Alerta
+2026-06-08 19:55:35,020 - INFO - Evento Vento Solar Intenso anexado a empresa usuario=fiap2026
+2026-06-08 19:55:38,136 - DEBUG - limpar_tela() chamado
+2026-06-08 19:55:42,102 - DEBUG - limpar_tela() chamado
+2026-06-08 19:55:42,103 - INFO - Evento solar detectado: Explosão Solar Classe M - nivel Atenção
+2026-06-08 19:55:42,105 - INFO - Evento Explosão Solar Classe M anexado a empresa usuario=fiap2026
+2026-06-08 19:55:44,001 - DEBUG - limpar_tela() chamado
+2026-06-08 19:55:51,222 - DEBUG - limpar_tela() chamado
+2026-06-08 19:55:51,222 - DEBUG - Nenhum evento solar significativo detectado no sorteio
+2026-06-08 19:55:52,847 - DEBUG - limpar_tela() chamado
+2026-06-08 19:55:56,491 - DEBUG - limpar_tela() chamado
+2026-06-08 19:55:56,491 - DEBUG - Nenhum evento solar significativo detectado no sorteio
+2026-06-08 19:55:58,327 - DEBUG - limpar_tela() chamado
+2026-06-08 19:56:01,570 - DEBUG - limpar_tela() chamado
+2026-06-08 19:56:01,571 - INFO - Evento solar detectado: Explosão Solar Classe X - nivel Crítico
+2026-06-08 19:56:01,573 - INFO - Evento Explosão Solar Classe X anexado a empresa usuario=fiap2026
+2026-06-08 19:56:03,183 - DEBUG - limpar_tela() chamado
+2026-06-08 19:56:04,521 - DEBUG - limpar_tela() chamado
+2026-06-08 19:56:04,521 - DEBUG - Nenhum evento solar significativo detectado no sorteio
+2026-06-08 19:59:06,633 - INFO - Inicializando módulo Gs_Menu
+2026-06-08 19:59:20,643 - INFO - Iniciando cadastro de empresa: FIAP (usuario=fiap2026)
+2026-06-08 19:59:20,688 - DEBUG - limpar_tela() chamado
+2026-06-08 19:59:26,131 - WARNING - Falha de login para usuario: fiap2026
+2026-06-08 19:59:27,412 - DEBUG - limpar_tela() chamado
+2026-06-08 19:59:34,658 - INFO - Login bem-sucedido para usuario: fiap2026
+2026-06-08 19:59:34,682 - DEBUG - limpar_tela() chamado
+2026-06-08 19:59:34,682 - INFO - Evento solar detectado: Explosão Solar Classe M - nivel Atenção
+2026-06-08 19:59:34,684 - INFO - Evento Explosão Solar Classe M anexado a empresa usuario=fiap2026
+2026-06-08 19:59:36,778 - DEBUG - limpar_tela() chamado
+2026-06-08 19:59:40,562 - DEBUG - limpar_tela() chamado
+2026-06-08 19:59:40,563 - INFO - Evento solar detectado: Ejeção de Massa Coronal - nivel Crítico
+2026-06-08 19:59:40,567 - INFO - Evento Ejeção de Massa Coronal anexado a empresa usuario=fiap2026
+2026-06-08 19:59:41,924 - DEBUG - limpar_tela() chamado
+2026-06-08 19:59:47,883 - DEBUG - limpar_tela() chamado
+2026-06-08 19:59:47,883 - DEBUG - Nenhum evento solar significativo detectado no sorteio
+2026-06-08 19:59:48,990 - DEBUG - limpar_tela() chamado
+2026-06-08 19:59:52,041 - DEBUG - limpar_tela() chamado
+2026-06-08 19:59:52,041 - DEBUG - Nenhum evento solar significativo detectado no sorteio
+2026-06-08 19:59:53,227 - DEBUG - limpar_tela() chamado
+2026-06-08 19:59:56,103 - DEBUG - limpar_tela() chamado
+2026-06-08 19:59:56,103 - DEBUG - Nenhum evento solar significativo detectado no sorteio
+2026-06-08 19:59:57,793 - DEBUG - limpar_tela() chamado
+2026-06-08 20:00:00,720 - DEBUG - limpar_tela() chamado
+2026-06-08 20:00:00,720 - DEBUG - Nenhum evento solar significativo detectado no sorteio
+2026-06-08 20:00:05,467 - DEBUG - limpar_tela() chamado
+2026-06-08 20:00:05,467 - DEBUG - Nenhum evento solar significativo detectado no sorteio
+2026-06-08 20:00:07,157 - DEBUG - limpar_tela() chamado
+2026-06-08 20:00:07,187 - DEBUG - limpar_tela() chamado
+2026-06-08 20:00:07,187 - DEBUG - Nenhum evento solar significativo detectado no sorteio
+2026-06-08 20:00:25,566 - DEBUG - limpar_tela() chamado
+2026-06-08 20:00:25,590 - DEBUG - limpar_tela() chamado
+2026-06-08 20:00:25,590 - DEBUG - Nenhum evento solar significativo detectado no sorteio
+2026-06-08 20:00:32,246 - DEBUG - limpar_tela() chamado
+2026-06-08 20:00:32,271 - DEBUG - limpar_tela() chamado
+2026-06-08 20:00:32,272 - INFO - Evento solar detectado: Explosão Solar Classe M - nivel Atenção
+2026-06-08 20:00:32,273 - INFO - Evento Explosão Solar Classe M anexado a empresa usuario=fiap2026
+2026-06-08 20:00:50,583 - DEBUG - limpar_tela() chamado
+2026-06-08 20:00:50,609 - DEBUG - limpar_tela() chamado
+2026-06-08 20:00:50,609 - DEBUG - Nenhum evento solar significativo detectado no sorteio
+2026-06-08 20:01:52,776 - INFO - Inicializando módulo Gs_Menu
+2026-06-08 20:01:54,844 - DEBUG - limpar_tela() chamado
+2026-06-08 20:02:00,290 - INFO - Login bem-sucedido para usuario: fiap2026
+2026-06-08 20:02:00,327 - DEBUG - limpar_tela() chamado
+2026-06-08 20:02:00,329 - INFO - Evento solar detectado: Explosão Solar Classe M - nivel Atenção
+2026-06-08 20:02:00,331 - INFO - Evento Explosão Solar Classe M anexado a empresa usuario=fiap2026
+2026-06-08 20:02:02,433 - DEBUG - limpar_tela() chamado
+2026-06-08 20:02:02,459 - DEBUG - limpar_tela() chamado
+2026-06-08 20:02:02,460 - DEBUG - Nenhum evento solar significativo detectado no sorteio
+2026-06-08 20:02:44,690 - INFO - Inicializando módulo Gs_Menu
+2026-06-08 20:02:46,453 - DEBUG - limpar_tela() chamado
+2026-06-08 20:02:52,817 - INFO - Login bem-sucedido para usuario: fiap2026
+2026-06-08 20:02:52,851 - DEBUG - limpar_tela() chamado
+2026-06-08 20:02:52,851 - DEBUG - Nenhum evento solar significativo detectado no sorteio
+2026-06-08 20:02:54,307 - DEBUG - limpar_tela() chamado
+2026-06-08 20:02:54,334 - DEBUG - limpar_tela() chamado
+2026-06-08 20:02:54,335 - DEBUG - Nenhum evento solar significativo detectado no sorteio

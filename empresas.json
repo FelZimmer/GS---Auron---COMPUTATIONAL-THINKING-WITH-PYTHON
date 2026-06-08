@@ -1,3 +1,83 @@
 {
-  "empresas": []
+  "empresas": [
+    {
+      "id": 1,
+      "nome": "FIAP",
+      "estado": "São Paulo",
+      "usuario": "fiap2026",
+      "senha": "fiap2026",
+      "tipo": "Data Center",
+      "eventos": [
+        {
+          "id": 47,
+          "data_hora": "2026-06-08 19:59",
+          "tipo_evento": "Explosão Solar Classe M",
+          "intensidade_nT": 245,
+          "duracao_min": 105,
+          "equipamento_risco": "No-breaks",
+          "nivel_alerta": "Atenção",
+          "auron_acionado": true,
+          "tempo_resposta_min": 14,
+          "dano_potencial": 210000.0,
+          "dano_evitado": 178500.0,
+          "custo_reparo": 31500.0,
+          "custo_manutencao_mensal": 450.0
+        },
+        {
+          "id": 36,
+          "data_hora": "2026-06-08 19:59",
+          "tipo_evento": "Ejeção de Massa Coronal",
+          "intensidade_nT": 445,
+          "duracao_min": 125,
+          "equipamento_risco": "Servidores",
+          "nivel_alerta": "Crítico",
+          "auron_acionado": true,
+          "tempo_resposta_min": 9,
+          "dano_potencial": 1560000.0,
+          "dano_evitado": 1326000.0,
+          "custo_reparo": 234000.0,
+          "custo_manutencao_mensal": 1200.0
+        },
+        {
+          "id": 31,
+          "data_hora": "2026-06-08 20:00",
+          "tipo_evento": "Explosão Solar Classe M",
+          "intensidade_nT": 185,
+          "duracao_min": 70,
+          "equipamento_risco": "No-breaks",
+          "nivel_alerta": "Atenção",
+          "auron_acionado": false,
+          "tempo_resposta_min": null,
+          "dano_potencial": 110000.0,
+          "dano_evitado": 0.0,
+          "custo_reparo": 110000.0,
+          "custo_manutencao_mensal": 450.0
+        },
+        {
+          "id": 43,
+          "data_hora": "2026-06-08 20:02",
+          "tipo_evento": "Explosão Solar Classe M",
+          "intensidade_nT": 220,
+          "duracao_min": 88,
+          "equipamento_risco": "Roteadores e Switches",
+          "nivel_alerta": "Atenção",
+          "auron_acionado": false,
+          "tempo_resposta_min": null,
+          "dano_potencial": 98000.0,
+          "dano_evitado": 0.0,
+          "custo_reparo": 98000.0,
+          "custo_manutencao_mensal": 300.0
+        }
+      ],
+      "eventos_previstos": [
+        {
+          "tipo_evento": "Explosão Solar de Classe X",
+          "intensidade_nT": 516,
+          "duracao_min": 166,
+          "nivel_alerta": "Crítico",
+          "data_previsao": "23/06/2026 19:59"
+        }
+      ]
+    }
+  ]
 }
