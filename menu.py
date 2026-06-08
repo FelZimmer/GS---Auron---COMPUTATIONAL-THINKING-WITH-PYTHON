@@ -132,6 +132,11 @@ def login():
     except json.JSONDecodeError:
         print("\nErro: Arquivo de dados corrompido.")
         return None, None
+    
+    
+def salvar_sessao(usuario, nome):
+    with open("sessao.json", "w", encoding="utf-8") as f:
+        json.dump({"usuario": usuario, "nome": nome}, f, ensure_ascii=False, indent=2)
 
 def tela_inicial():
     print("\nBem-vindo ao Auron — Plataforma de Proteção Solar B2B")
@@ -140,6 +145,9 @@ def tela_inicial():
             return login()
         case "2":
             return cadastrar_empresa()
+        case _:
+            print("Opção inválida. Retornando ao menu principal.")
+            tela_inicial()
 
 def sortear_evento():
     is_event = random.choice([True, False, False, False])
@@ -547,6 +555,9 @@ def alertas_ativos():
 name_login, name_empresa = tela_inicial()
 user = name_login
 
+if name_login:
+    salvar_sessao(name_login, name_empresa)
+
 def prever_evento():
     evento_previsto = random.choice(["Ejeção de Massa Coronal", "Rajada de Raios Cósmicos", "Tempestade Geomagnética", "Vento Solar Intenso", "Explosão Solar de Classe M", "Explosão Solar de Classe X", "Nenhum evento solar significativo detectado"])
     if evento_previsto == "Ejeção de Massa Coronal":
@@ -594,7 +605,7 @@ def prever_evento():
                     with open("empresas.json", "w", encoding="utf-8") as f:
                         json.dump(data, f, indent=2, ensure_ascii=False)
 
-    
+ 
 
 while True:
     limpar_tela()
@@ -634,7 +645,7 @@ while True:
             gerar_relatorio_roi()
             input("Pressione Enter para retornar ao menu...")
         case "7":
-            os.system("start cmd /k streamlit run dashboard.py")
+            os.system('start cmd /k python -m streamlit run dashboard.py')
             limpar_tela()
         case "0":
             limpar_tela()

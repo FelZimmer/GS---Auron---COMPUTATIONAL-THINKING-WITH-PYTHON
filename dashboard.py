@@ -142,35 +142,42 @@ def eventos_para_df(empresa):
     df = pd.DataFrame(ev)
     return df
 
+def carregar_sessao():
+    try:
+        with open("sessao.json", "r", encoding="utf-8") as f:
+            return json.load(f)
+    except FileNotFoundError:
+        return None
+
 
 # Streamlit UI
 st.set_page_config(page_title="Auron — Dashboard", layout="wide")
 st.title("Auron — Dashboard (local)")
 
-if "user" not in st.session_state:
-    st.session_state.user = None
+if "user" not in st.session_state:          # ← adicione isso
+    st.session_state.user = None 
 
-with st.sidebar:
-    st.header("Acesso")
-    if st.session_state.user is None:
-        usuario = st.text_input("Usuário")
-        senha = st.text_input("Senha", type="password")
-        if st.button("Entrar"):
-            user = autenticar(usuario.strip().lower(), senha.strip())
-            if user:
-                st.session_state.user = user
-                safe_rerun()
-            else:
-                st.error("Usuário ou senha inválidos")
-    else:
-        st.markdown(f"**{st.session_state.user.get('nome','-')}**")
-        if st.button("Sair"):
-            st.session_state.user = None
-            safe_rerun()
+if "user" not in st.session_state or st.session_state.user is None:
+    sessao = carregar_sessao()
+    if sessao:
+        empresas = load_empresas()
+        for e in empresas:
+            if e.get("usuario") == sessao["usuario"]:
+                st.session_state.user = e
+                break
 
 if st.session_state.user is None:
-    st.info("Faça login pela barra lateral para acessar o dashboard.")
+    st.error("Sessão não encontrada. Faça login pelo terminal.")
     st.stop()
+
+with st.sidebar:
+    st.header("Sessão")
+    st.markdown(f"**{st.session_state.user.get('nome', '-')}**")
+    if st.button("Sair"):
+        if os.path.exists("sessao.json"):
+            os.remove("sessao.json")
+        st.session_state.user = None
+        st.stop()
 
 empresa = st.session_state.user
 total, ativos, dano, evitado = calcular_kpis(empresa)
