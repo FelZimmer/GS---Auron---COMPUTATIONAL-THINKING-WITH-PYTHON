@@ -70,4 +70,3 @@ Desenvolvido como parte do curso de Pensamento Computacional com Python
 ## A fazer
  - Tratamento de erro/validação no login e cadastro
  - Criar função de dashboard completo
- - Logs do projeto

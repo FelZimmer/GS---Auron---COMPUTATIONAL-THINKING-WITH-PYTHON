@@ -3,6 +3,7 @@ import random
 import matplotlib.pyplot as plt
 import json
 import os
+import logging
 from fpdf import FPDF
 import datetime
 
@@ -15,9 +16,26 @@ ESTADOS_BRASIL = {
     "RS": "Rio Grande do Sul", "RO": "Rondônia", "RR": "Roraima", "SC": "Santa Catarina",
     "SP": "São Paulo", "SE": "Sergipe", "TO": "Tocantins"
 }
+
+# Configuração de logs
+logs_dir = os.path.join(os.getcwd(), "logs")
+os.makedirs(logs_dir, exist_ok=True)
+logfile = os.path.join(logs_dir, "Gs_Menu.log")
+
+logger = logging.getLogger("Auron.Gs_Menu")
+logger.setLevel(logging.DEBUG)
+if not logger.handlers:
+    fh = logging.FileHandler(logfile, encoding="utf-8")
+    fh.setLevel(logging.DEBUG)
+    formatter = logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
+    fh.setFormatter(formatter)
+    logger.addHandler(fh)
+
+logger.info("Inicializando módulo Gs_Menu")
 def limpar_tela():
     # nt = indentifica o Windows e executa o comando 'cls', else = clear para Linux/Mac
     os.system('cls' if os.name == 'nt' else 'clear')
+    logger.debug("limpar_tela() chamado")
 
 
 def escolher_estado():    
@@ -43,6 +61,7 @@ def cadastrar_empresa():
     regiao = escolher_estado()
     usuario = input("Crie um nome de usuário para acessar o dashboard: ").lower()
     senha = input("Crie uma senha para acessar o dashboard: ")
+    logger.info(f"Iniciando cadastro de empresa: {nome_empresa} (usuario={usuario})")
     
     
     try:
@@ -89,9 +108,11 @@ def login():
                 break
 
         if empresa_logada:
+            logger.info(f"Login bem-sucedido para usuario: {usuario_input}")
             print(f"\nLogin bem-sucedido! Bem-vindo, {empresa_logada['nome']}!")
             return empresa_logada["usuario"], empresa_logada["nome"]  # Retorna o nome de usuário para uso posterior 
         else:
+            logger.warning(f"Falha de login para usuario: {usuario_input}")
             print("\nUsuário ou senha incorreto(s).")
             match int(input("""Selecione uma opção:\n
 1. Cadastro
@@ -127,10 +148,12 @@ def sortear_evento():
             data = json.load(f)
             evento_aleatorio = random.choice(data["eventos"])
             evento_aleatorio["data_hora"] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
+            logger.info(f"Evento solar detectado: {evento_aleatorio.get('tipo_evento')} - nivel {evento_aleatorio.get('nivel_alerta')}")
             print(f"\n Evento Solar Detectado: {evento_aleatorio['tipo_evento']}")
             print(f" Data/Hora: {evento_aleatorio['data_hora']}")
             print(f" Status: {evento_aleatorio['nivel_alerta']}") # Pintar de acordo com o nível de alerta
     else:
+        logger.debug("Nenhum evento solar significativo detectado no sorteio")
         print(" Nenhum evento solar significativo detectado.")
         return
 
@@ -143,6 +166,7 @@ def sortear_evento():
     for empresa in data.get("empresas"):
         if empresa.get("usuario") == name_login:
             empresa.get("eventos").append(evento_aleatorio)
+            logger.info(f"Evento {evento_aleatorio.get('tipo_evento')} anexado a empresa usuario={name_login}")
 
     with open("empresas.json", "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
