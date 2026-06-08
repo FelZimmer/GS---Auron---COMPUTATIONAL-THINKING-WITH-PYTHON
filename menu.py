@@ -666,10 +666,14 @@ while True:
             prever_evento()
             input("Pressione Enter para retornar ao menu...")
         case "6":
+            limpar_tela()
             gerar_relatorio_roi()
             input("Pressione Enter para retornar ao menu...")
         case "7":
-            os.system('start cmd /k streamlit run dashboard.py')
+            try:
+                os.system('start cmd /k streamlit run dashboard.py')
+            except:
+                os.system('start cmd /k python -m streamlit run dashboard.py')
             limpar_tela()
         case "0":
             limpar_tela()
