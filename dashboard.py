@@ -28,7 +28,7 @@ if not logger.handlers:
 
 
 def safe_rerun():
-    """Tenta forçar rerun no Streamlit; se indisponível, registra e continua."""
+    #Tenta forçar rerun no Streamlit; se indisponível, registra e continua.
     try:
         st.experimental_rerun()
     except Exception:
