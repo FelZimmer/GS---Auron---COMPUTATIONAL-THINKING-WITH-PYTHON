@@ -32,9 +32,11 @@ O diferencial está na **narrativa de impacto em cadeia**:
 - ✅ **Simulação de Impacto de Anomalias** — Visualização gráfica do dano potencial causado por tempestades solares
 - ✅ **Alertas Ativos** — Monitoramento em tempo real de eventos solares detectados
 - ✅ **Histórico de Eventos** — Registro detalhado de todos os eventos solares processados
-- ⏳ **Previsão de Tempestades** — Em desenvolvimento
+- ✅ **Previsão de Tempestades** — Identifica eventos futuros
 - ✅ **Relatório de ROI** — Geração automática de relatórios em PDF com análise de custos evitados
-- ⏳ **Dashboard Completo** — Em desenvolvimento
+- ✅ **Dashboard Completo** — Abre o dashboard em uma página do navegador
+
+
 
 ---
 
@@ -154,7 +156,7 @@ pip install -r requirements.txt
 Ou instale manualmente:
 
 ```bash
-pip install streamlit plotly filelock fpdf2 pandas matplotlib
+pip install streamlit plotly filelock fpdf fpdf2 pandas matplotlib rich logging
 ```
 
 ### 3. Execute o sistema
@@ -184,14 +186,11 @@ Senha: ********
 Login bem-sucedido! Bem-vindo, NexCore Tecnologia!
 ```
 
-### Empresas pré-cadastradas para teste
+### Empresa pré-cadastradas para teste
 
 | Usuário | Senha | Empresa | Estado |
 |---------|-------|---------|--------|
-| `nexcore` | `Nex@2026` | NexCore Tecnologia | SP |
-| `maretech` | `Mare@2026` | MareTech Infraestrutura | RJ |
-| `sultech` | `Sul@2026` | SulTech Infraestrutura | PR |
-| `capitalserver` | `Cap@2026` | CapitalServer | DF |
+| `fiap2026` | `fiap2026` | `FIAP` | SP |
 
 ### Abrindo o Dashboard
 ```
@@ -218,14 +217,13 @@ Dashboard aberto no navegador!
 - Os dados são armazenados localmente em arquivos JSON (`empresas.json` e `eventos.json`)
 - Os relatórios PDF são salvos no diretório `relatorios/` com nome contendo o nome da empresa e data
 - A aplicação inclui simulações aleatórias de eventos solares para demonstração
-- Funcionalidades marcadas como ⏳ **Em desenvolvimento** estão planejadas para versões futuras
 
 ---
 
 ## 📄 Licença
 
 Este projeto foi desenvolvido para fins educacionais e demonstrativos.
-Desenvolvido como parte do curso de **Pensamento Computacional com Python — FIAP**.
+Desenvolvido como parte da disciplina de **Computational Thinking with Python — FIAP**.
 
 ---
 
@@ -239,6 +237,10 @@ Desenvolvido como parte do curso de **Pensamento Computacional com Python — FI
 | 571458 | Matheus Lopes Lima |
 | 570863 | Felipe de Oliveira Zimmermann |
 
+---
+## Vídeo no YouTube
+
+#### [Acesse aqui!](https://www.youtube.com/watch?v=XfYu1a3OSU0)
 ---
 
 > Desenvolvido para a **Global Solution 2026 — 1º Semestre**
