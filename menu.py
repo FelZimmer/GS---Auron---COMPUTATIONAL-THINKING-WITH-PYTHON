@@ -200,7 +200,7 @@ def sortear_evento():
         
     
     
-
+# função Menu Principal
 def menu():
     tabela = Table(title="AURON — Plataforma de Proteção Solar B2B", box=None, show_header=False)
     tabela.add_column("Opção", style="bold green", width=8)
